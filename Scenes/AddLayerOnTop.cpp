@@ -6,11 +6,12 @@
 using namespace std;
 
 vector<string> ReadSceneFromFile(string FileName);
-vector<string> WriteObject(vector<string> pic, vector<string> layer, int pos_x, int pos_y);
+vector<string> AddLayerOnTop(vector<string> layer, vector<string> newLayer);
+void WriteSceneToFile(string FileName,vector<string> layer);
 
 int main(int argc, char* argv[]){
-	//  second arg: txtfile of scene; third arg: txtfile storing figure, no \n at end; forth arg: x position; fifth arg:
-	// y position; 
+	// first arg: first layer; second arg: second layer; third arg: output layer
+	// put second layer on top of first layer and output it to output layer
 	if(argc != 4){
 		cout << "argument number not right" << endl;
 		exit(1);
@@ -20,12 +21,13 @@ int main(int argc, char* argv[]){
 	vector<string> second_layer;
 	vector<string> output_layer;
 
-	first_layer = ReadSceneFromFile(argv[1],layer);
-	second_layer = ReadSceneFromFile(argv[2],layer);
-	output_layer = ReadSceneFromFile(argv[3],layer);
+	first_layer = ReadSceneFromFile(argv[1]);
+	second_layer = ReadSceneFromFile(argv[2]);
+	output_layer = AddLayerOnTop(first_layer,second_layer);
+
+	WriteSceneToFile(argv[3],output_layer);
 
 
-	WriteSceneToFile(argv[1],layer);
 	return 0;
 }
 
@@ -40,10 +42,14 @@ vector<string> ReadSceneFromFile(string FileName){
 	}
 	string line;
 	getline(fin,line);
-	int originalLength = 0;
+	int originalLength = line.size();
+	layer.push_back(line);
 	while(getline(fin,line)){
-
 		layer.push_back(line);
+		if(line.size()!=originalLength){
+			cout << FileName << "Layer X Size not consistent" << endl;
+			exit(1);
+		}
 	}
 	fin.close();
 	return layer;
@@ -65,20 +71,25 @@ void WriteSceneToFile(string FileName,vector<string> layer){
 	fout.close();
 }
 
-void AddLayerOnTop(Layer layer, Layer newLayer){
-	if(newLayer.LayerXSize != LayerXSize){
-		cerr << LayerName << " LayerXSize not consistent" << endl;
+vector<string> AddLayerOnTop(vector<string> layer, vector<string> newLayer){
+	int layerXSize = layer[0].size();
+	int newLayerXSize = newLayer[0].size();
+	int layerYSize = layer.size();
+	int newLayerYSize = newLayer.size();
+	if(newLayerXSize != layerXSize){
+		cout << " LayerXSize not consistent" << endl;
 		exit(1);
 	}
-	if(newLayer.LayerYSize != LayerYSize){
-		cerr << LayerName << " LayerYSize not consistent" << endl;
+	if(newLayerYSize != layerYSize){
+		cout << " LayerYSize not consistent" << endl;
 		exit(1);
 	}
-	for(int i=0;i<LayerYSize;i++){
-		for(int j=0;j<LayerXSize;j++){
-			if(newLayer.layer[i][j]!=' '){
-				layer[i][j] = newLayer.layer[i][j];
+	for(int i=0;i<layerYSize;i++){
+		for(int j=0;j<layerXSize;j++){
+			if(newLayer[i][j]!=' '){
+				layer[i][j] = newLayer[i][j];
 			}
 		}
 	}
+	return layer;
 }

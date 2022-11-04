@@ -29,8 +29,10 @@ clean:
 	rm *.o
 
 InstallDependencies:
-	sudo apt-get install libncurses-dev
+	echo "Install Begins"
+	echo "Install Ends"
 PurgeDependencies:
-	sudo apt-get --purge autoremove libncurses-dev
+	echo "Deletion Begins"
+	echo "Deletion Ends"
 .PHONY:
 	clean InstallDependencies PurgeDependencies

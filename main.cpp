@@ -3,8 +3,8 @@
 #include<string>
 #include<cmath>
 #include <unistd.h>
-#include <termios.h>
-#include <sys/ioctl.h>
+//#include <termios.h>
+//#include <sys/ioctl.h>
 #include "common.h"
 #include "Layer.h"
 #include "Player.h"
@@ -18,7 +18,14 @@ int key_nr;
 char Input;
 keyboard keyb;
 int main(){
+
+	string SceneName;
+
+	cout << "Enter SceneName: " << endl;
+	cin >> SceneName;
+
 	system("clear");
+
 	Layer layer;
 	Layer layer1;
 	Layer layer2;
@@ -34,17 +41,17 @@ int main(){
 	Player player(0,0,5.0,90.0,60.0,35.0,30.0);
 
 	// read the shape of scene
-	layer.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
-	layer1.ReadLayerFromFile("Scenes/TestScene/scene1.txt");
-	layer2.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
+	layer.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
+	layer1.ReadLayerFromFile("Scenes/"+SceneName+"/scene1.txt");
+	layer2.ReadLayerFromFile("Scenes/"+SceneName+"/scene2.txt");
 
 	// read the color of scene
-	layer_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
-	layer1_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
-	layer2_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
+	layer_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
+	layer1_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/fgColor_scene1.txt");
+	layer2_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/fgColor_scene2.txt");
 
 	// read the layer for controling collision
-	PhyLayer.ReadLayerFromFile("Scenes/TestScene/phyScene.txt");
+	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
 
 	while(1){
 		// detect if keyboard is hit
