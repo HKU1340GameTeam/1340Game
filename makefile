@@ -28,5 +28,9 @@ common.o: common.cpp common.h
 clean:
 	rm *.o
 
+InstallDependencies:
+	sudo apt-get install libncurses-dev
+PurgeDependencies:
+	sudo apt-get --purge autoremove libncurses-dev
 .PHONY:
-	clean
+	clean InstallDependencies PurgeDependencies

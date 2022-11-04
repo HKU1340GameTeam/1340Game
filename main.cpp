@@ -40,7 +40,7 @@ int main(){
 
 	// read the color of scene
 	layer_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
-	layer1_fg_color.ReadLayerFromFile("Scenes/TestScene/fgColor_scene1.txt");
+	layer1_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
 	layer2_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
 
 	// read the layer for controling collision
@@ -86,6 +86,7 @@ int main(){
 
 		gotoxy(1,1);
 		camera.colorPrintCam();
+		//camera.printCam();
 
 		// refresh with refresh rate of 1/deltatime
 		usleep(deltaTime);

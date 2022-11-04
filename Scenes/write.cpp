@@ -10,9 +10,9 @@ void WriteSceneToFile(string FileName,vector<string> layer);
 vector<string> WriteObject(vector<string> pic, vector<string> layer, int pos_x, int pos_y);
 
 int main(int argc, char* argv[]){
-	// second arg: txtfile storing figure, no \n at end; third arg: txtfile of scene; forth arg: x position; fifth arg:
-	// y position; sixth arg: new scene name
-	if(argc != 6){
+	//  second arg: txtfile of scene; third arg: txtfile storing figure, no \n at end; forth arg: x position; fifth arg:
+	// y position; 
+	if(argc != 5){
 		cout << "argument number not right" << endl;
 		exit(1);
 	}
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
 
 	layer = WriteObject(figure, layer, x, y);
 
-	WriteSceneToFile(argv[5],layer);
+	WriteSceneToFile(argv[1],layer);
 	return 0;
 }
 
