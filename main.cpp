@@ -31,20 +31,20 @@ int main(){
 	Camera camera = Camera();
 
 	// initialize player
-	Player player(0,0,100.0,35.0,60.0,35.0,30.0);
+	Player player(0,0,5.0,90.0,60.0,35.0,30.0);
 
 	// read the shape of scene
-	layer.ReadLayerFromFile("Scenes_1/emptyScene.txt");
-	layer1.ReadLayerFromFile("Scenes_1/scene1.txt");
-	layer2.ReadLayerFromFile("Scenes_1/scene2.txt");
+	layer.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
+	layer1.ReadLayerFromFile("Scenes/TestScene/scene1.txt");
+	layer2.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
 
 	// read the color of scene
-	layer_fg_color.ReadLayerFromFile("Scenes_1/emptyScene.txt");
-	layer1_fg_color.ReadLayerFromFile("Scenes_1/scene1_fg_color.txt");
-	layer2_fg_color.ReadLayerFromFile("Scenes_1/scene2_fg_color.txt");
+	layer_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
+	layer1_fg_color.ReadLayerFromFile("Scenes/TestScene/fgColor_scene1.txt");
+	layer2_fg_color.ReadLayerFromFile("Scenes/TestScene/emptyScene.txt");
 
 	// read the layer for controling collision
-	PhyLayer.ReadLayerFromFile("Scenes_1/phyScene.txt");
+	PhyLayer.ReadLayerFromFile("Scenes/TestScene/phyScene.txt");
 
 	while(1){
 		// detect if keyboard is hit
