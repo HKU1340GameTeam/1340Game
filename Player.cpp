@@ -89,6 +89,7 @@ void Player::InputToVelocity(char Input){
 
 void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
 	int distanceToGround=Raycast('j',PhyLayer)-1;
+	int distanceToCeil=Raycast('k',PhyLayer)-1;
 	int distanceToLeft=Raycast('h',PhyLayer)-1;
 	int distanceToRight=Raycast('l',PhyLayer)-1;
 	int delta_y = new_y_pos - int_y_pos;
@@ -131,9 +132,17 @@ void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
 
 		position.y = int_y_pos;
 
-		//Input=standMove;
-
 		hiddenMove = emptyMove;
+	}
+	else if(-delta_y >= distanceToCeil && velocity.y <= 0){
+
+		delta_y = -distanceToCeil;
+
+		velocity.y = 0;
+
+		int_y_pos += delta_y;
+
+		position.y = int_y_pos;
 	}
 	else{
 		int_y_pos += delta_y;
@@ -231,7 +240,17 @@ int Player::Raycast(char direction,Layer PhyLayer){
 		}
 		
 	}
-	if(direction == 'l'){
+	else if(direction == 'k'){
+		y_pos+=ceilMarginOffset;
+		for(int i=x_pos+leftMarginOffset;i<x_pos+rightMarginOffset+1;i++){
+			reflection = raycast(i,y_pos,direction,PhyLayer);
+			if(reflection<minimum){
+				minimum = reflection;
+			}
+		}
+		
+	}
+	else if(direction == 'l'){
 		x_pos+=rightMarginOffset;
 		for(int i=y_pos+ceilMarginOffset;i<y_pos+floorMarginOffset+1;i++){
 			reflection = raycast(x_pos,i,direction,PhyLayer);
@@ -240,7 +259,7 @@ int Player::Raycast(char direction,Layer PhyLayer){
 			}
 		}
 	}
-	if(direction == 'h'){
+	else if(direction == 'h'){
 		x_pos+=leftMarginOffset;
 		for(int i=y_pos+ceilMarginOffset;i<y_pos+floorMarginOffset+1;i++){
 			reflection = raycast(x_pos,i,direction,PhyLayer);
@@ -267,7 +286,7 @@ int Player::raycast(int x,int y,char direction,Layer PhyLayer){
 	else if(direction=='k'){
 		while(!found){
 			y-=1;
-			if(PhyLayer.layer[y][x]!=' ' || PhyLayer.OutOfLayer(x,y)){
+			if((PhyLayer.layer[y][x]!=' ' && PhyLayer.layer[y][x]!=raycast_x_ignore) || PhyLayer.OutOfLayer(x,y)){
 				found=true;
 			}
 			counter+=1;
