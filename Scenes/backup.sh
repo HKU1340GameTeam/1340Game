@@ -1,2 +1,2 @@
 #!/bin/bash
-cp "$1" "$1.bak"
+cp "$1.txt" "$1.txt.bak"

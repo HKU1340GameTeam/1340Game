@@ -9,11 +9,12 @@ vector<string> ReadSceneFromFile(string FileName);
 vector<string> DiffLayer(vector<string> layer, vector<string> editorPhyLayer);
 void WriteSceneToFile(string FileName,vector<string> layer);
 vector<string> WritePlatformToScene(vector<string> layer, vector<string> editorPhyLayer, char platform_look);
+vector<string> WritePlatformColorToScene(vector<string> colorLayer, vector<string> editorPhyLayer, char platformColor);
 
 int main(int argc, char* argv[]){
 	// first arg: sceneCombined.txt; second arg: editorPhyLayer; third arg: phyLayer; forth arg: platform look; fifth
-	// arg: platform storing in this scene
-	if(argc != 6){
+	// arg: platform storing in this scene; sixth arg: Platform Color; seventh arg: Platform Color File
+	if(argc != 8){
 		cout << "argument number not right" << endl;
 		exit(1);
 	}
@@ -23,17 +24,51 @@ int main(int argc, char* argv[]){
 	vector<string> platformScene;
 	vector<string> phyLayer;
 
+	vector<string> colorScene;
+
 	sceneCombined = ReadSceneFromFile(argv[1]);
 	editorPhyLayer = ReadSceneFromFile(argv[2]);
+	colorScene = ReadSceneFromFile(argv[7]);
+	platformScene = ReadSceneFromFile(argv[5]);
+
 	char platform_look = argv[4][0];
-	platformScene = WritePlatformToScene(sceneCombined,editorPhyLayer,platform_look);
+	char platformColor = argv[6][0];
+
+	platformScene = WritePlatformToScene(platformScene,editorPhyLayer,platform_look);
+
+	colorScene = WritePlatformColorToScene(colorScene,editorPhyLayer,platformColor);
+
 	phyLayer = DiffLayer(sceneCombined,editorPhyLayer);
 
 	WriteSceneToFile(argv[5],platformScene);
 	WriteSceneToFile(argv[3],phyLayer);
+	WriteSceneToFile(argv[7],colorScene);
 
 
 	return 0;
+}
+
+vector<string> WritePlatformColorToScene(vector<string> colorLayer, vector<string> editorPhycolorLayer, char platformColor){
+	int colorLayerXSize = colorLayer[0].size();
+	int editorPhycolorLayerXSize = editorPhycolorLayer[0].size();
+	int colorLayerYSize = colorLayer.size();
+	int editorPhycolorLayerYSize = editorPhycolorLayer.size();
+	if(editorPhycolorLayerXSize != colorLayerXSize){
+		cout << " colorLayerXSize not consistent" << endl;
+		exit(1);
+	}
+	if(editorPhycolorLayerYSize != colorLayerYSize){
+		cout << " colorLayerYSize not consistent" << endl;
+		exit(1);
+	}
+	for(int i=0;i<colorLayerYSize;i++){
+		for(int j=0;j<colorLayerXSize;j++){
+			if(editorPhycolorLayer[i][j]=='p'){
+				colorLayer[i][j] = platformColor;
+			}
+		}
+	}
+	return colorLayer;
 }
 
 
@@ -47,11 +82,11 @@ vector<string> ReadSceneFromFile(string FileName){
 	}
 	string line;
 	getline(fin,line);
-	int originalLength = line.size();
+	int originalLength = int(line.size());
 	layer.push_back(line);
 	while(getline(fin,line)){
 		layer.push_back(line);
-		if(line.size()!=originalLength){
+		if(int(line.size())!=originalLength){
 			cout << FileName << "Layer X Size not consistent" << endl;
 			exit(1);
 		}

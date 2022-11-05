@@ -1,7 +1,9 @@
 #!/bin/bash
-files=`ls`
+
+rm *.bak
+files="`ls`"
 for file in $files:
 do
-    echo "$file"
-    cp $file "$file.bak"
+    echo "creating backup for $file"
+    cp $file $file.bak
 done

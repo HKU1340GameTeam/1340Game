@@ -38,7 +38,7 @@ int main(){
 	Camera camera = Camera();
 
 	// initialize player
-	Player player(0,0,5.0,90.0,60.0,35.0,30.0);
+	Player player(0,0,5.0,5.0,60.0,35.0,30.0);
 
 	// read the shape of scene
 	layer.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
@@ -52,6 +52,8 @@ int main(){
 
 	// read the layer for controling collision
 	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
+
+	cout << "successful" << endl;
 
 	while(1){
 		// detect if keyboard is hit
@@ -76,10 +78,11 @@ int main(){
 		// update layers(1. reseting layers 2. putting object into new position 3. pile up layers)
 		layer.ResetLayer();
 		layer1.ResetLayer();
-		//layer2.ResetLayer();
+		layer2.ResetLayer();
+		cout << "successful" << endl;
 		layer_fg_color.ResetLayer();
 		layer1_fg_color.ResetLayer();
-		//layer2_fg_color.ResetLayer();
+		layer2_fg_color.ResetLayer();
 
 		layer1.WriteObject(player.figure,player.int_x_pos,player.int_y_pos,3,3);
 		layer1_fg_color.WriteObject(player.figure_fg_color,player.int_x_pos,player.int_y_pos,3,3);
