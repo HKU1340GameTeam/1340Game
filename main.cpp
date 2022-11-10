@@ -53,7 +53,6 @@ int main(){
 	// read the layer for controling collision
 	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
 
-	cout << "successful" << endl;
 
 	while(1){
 		// detect if keyboard is hit
@@ -79,7 +78,6 @@ int main(){
 		layer.ResetLayer();
 		layer1.ResetLayer();
 		layer2.ResetLayer();
-		cout << "successful" << endl;
 		layer_fg_color.ResetLayer();
 		layer1_fg_color.ResetLayer();
 		layer2_fg_color.ResetLayer();
