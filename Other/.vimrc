@@ -69,13 +69,17 @@ autocmd BufRead * silent loadview
  let g:lastplace_open_folds = 0
 
 :map \RR :! python %<CR>
-:map \CC :! g++ -pedantic-errors -std=c++11 % -o %:r<CR>
+:map \CC :! g++ -Wall -Werror -pedantic-errors -std=c++11 % -o %:r<CR>
 :map \RC :!./%:r<CR>
 :map \CS :!chmod u+x %<CR>
 :map \RS :!./%<CR>
 :map \FF A{}<LEFT><CR><ESC>O
 :map \Cpp :r !date<ESC>i// <ESC>kddo<BS><BS><BS>#include<iostream><CR>#include<string><CR>using namespace std;<CR><CR>int main()<ESC>FF <BS>return 0;<ESC>O
-"<ESC>O// beginning of main<CR><BS><BS><BS>
+:map \SH i#!/bin/bash<CR>
+:map J vyjvp
+:map K vykvp
+:map H vyhvp
+:map L vylvp
 map <C-c> "+y<CR>
 
 set ic
