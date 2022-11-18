@@ -8,29 +8,47 @@
 #include <string>
 using namespace std;
 
+//Camera::Camera(){
+	//ifstream fin;
+	//fin.open("Camera/camera.txt");
+	//if(fin.fail()){
+		//perror("fail to open file");
+		//throw "fail to open file";
+	//}
+	//string line;
+	//while(getline(fin,line)){
+		//if(CamXSize != 0){
+			//if(int(line.size()) != CamXSize){
+				//perror("Cam X direction size not consistent");
+				//throw "Cam X direction size not consistent";
+			//}
+		//}
+		//cam.push_back(line);
+		//fgColorCam.push_back(line);
+	//}
+	//if(int(cam.size()) != CamYSize){
+		//perror("Cam Y direction size not consistent");
+		//throw "Cam Y direction size not consistent";
+	//}
+	//fin.close();
+//}
+
 Camera::Camera(){
-	ifstream fin;
-	fin.open("Camera/camera.txt");
-	if(fin.fail()){
-		perror("fail to open file");
-		throw "fail to open file";
+	string Ceil = "**";
+	string Middle = "*";
+	for(int i=2;i<CamXSize;i++){
+		Ceil+="*";
+		Middle+=" ";
 	}
-	string line;
-	while(getline(fin,line)){
-		if(CamXSize != 0){
-			if(int(line.size()) != CamXSize){
-				perror("Cam X direction size not consistent");
-				throw "Cam X direction size not consistent";
-			}
-		}
-		cam.push_back(line);
-		fgColorCam.push_back(line);
+	Middle+="*";
+	cam.push_back(Ceil);
+	fgColorCam.push_back(Ceil);
+	for(int i=2;i<CamYSize;i++){
+		cam.push_back(Middle);
+		fgColorCam.push_back(Middle);
 	}
-	if(int(cam.size()) != CamYSize){
-		perror("Cam Y direction size not consistent");
-		throw "Cam Y direction size not consistent";
-	}
-	fin.close();
+	cam.push_back(Ceil);
+	fgColorCam.push_back(Ceil);
 }
 
 void Camera::printCam(){

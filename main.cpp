@@ -53,7 +53,6 @@ int main(){
 	// read the layer for controling collision
 	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
 
-
 	while(1){
 		// detect if keyboard is hit
 		if(keyb.kbhit()){

@@ -17,12 +17,12 @@ class Camera{
 		int y_pos;
 
 		// offset to the center
-		int center_x_offset = 73;
-		int center_y_offset = 25;
+		int center_x_offset = 86;
+		int center_y_offset = 28;
 
 		// MaxXLength is the horizontal Length of the Camera, ..Y.. is the vertical one
-		int CamXSize = 150;
-		int CamYSize = 40;
+		int CamXSize = 178;
+		int CamYSize = 43;
 		
 		// Cam that records figure
 		vector<string> cam;
