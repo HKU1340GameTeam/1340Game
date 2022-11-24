@@ -12,7 +12,7 @@ struct vec{
 
 
 // the time for refresh(in e-6 seconds)
-const float deltaTime = 25000;
+const float deltaTime = 50000;
 // used to adjust refresh time
 const float refreshOffset = 10000;
 // the time in second for refreshing
