@@ -1,7 +1,7 @@
 FLAGS=-ggdb3 -Werror -Wall -pedantic-errors -std=c++11
 
 
-main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o
+main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o
 	g++ $(FLAGS) $^ -o $@
 
 main.o: main.cpp common.h Layer.h Player.h kbhit.h Camera.h
@@ -20,6 +20,9 @@ Camera.o: Camera.cpp Camera.h common.h Layer.h Player.h Color.h
 	g++ $(FLAGS) -c $<
 
 Color.o: Color.cpp Color.h
+	g++ $(FLAGS) -c $<
+
+Animator.o: Animator.cpp Animator.h Layer.h common.h
 	g++ $(FLAGS) -c $<
 
 common.o: common.cpp common.h
