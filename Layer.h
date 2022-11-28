@@ -39,9 +39,13 @@ class Layer{
 
 	// read layer with FileName to originalLayer and layer
 	void ReadLayerFromFile(string FileName);
-
-	// Cover layer with newLayer(ignoring all the spaces)
+	// cover layer with newLayer(ignoring all the spaces)
 	void AddLayerOnTop(Layer newLayer);
+
+	// erase layer (an opposite operation to ReadLayerFromFile)
+	void EraseLayer();
+	// erase and read new layer
+	void ReadNewLayerFromFile(string Filename);
 };
 
 #endif

@@ -89,17 +89,16 @@ void Layer::AddLayerOnTop(Layer newLayer){
 	}
 }
 
+void Layer::EraseLayer() {
+	LayerXSize = 0;
+	LayerYSize = 0;
+	LayerName = "";
+	layer.clear();
+	originalLayer.clear();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+void Layer::ReadNewLayerFromFile(string Filename) {
+	EraseLayer();
+	ReadLayerFromFile(Filename);
+}
 

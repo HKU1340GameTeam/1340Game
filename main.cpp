@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "kbhit.h"
 #include "Camera.h"
+#include "Scene.h"
 using namespace std;
 
 // "kbhit.h" is from stackoverflow written by "orlov_dumitru"
@@ -19,10 +20,10 @@ char Input;
 keyboard keyb;
 int main(){
 
-	string SceneName;
+	string state = "Normal";
 
-	cout << "Enter SceneName: " << endl;
-	cin >> SceneName;
+	//cout << "Enter SceneName: " << endl;
+	//cin >> SceneName;
 
 	system("clear");
 
@@ -40,6 +41,7 @@ int main(){
 	// initialize player
 	Player player(0,0,5.0,5.0,60.0,35.0,30.0);
 
+	/*
 	// read the shape of scene
 	layer.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
 	layer1.ReadLayerFromFile("Scenes/"+SceneName+"/scene1.txt");
@@ -52,54 +54,63 @@ int main(){
 
 	// read the layer for controling collision
 	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
+	*/
 
-	while(1){
-		// detect if keyboard is hit
-		if(keyb.kbhit()){
-			key_nr = keyb.getch();
-			Input = key_nr;
-			// if 0 is hit, leave the game
-			if(Input == '0'){
-				break;
+	Scene scene;
+	string sceneName = "FirstScene";
+	scene.setName(sceneName);
+	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+	// cout << 's' << endl;
+
+	while (state != "Exit") {
+		while (state == "Normal") {
+
+			if (scene.switchScene(player)) {
+				// cout << 'd' << endl;
+				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 			}
-			// otherwise, update position of player accordingly, but consider collision by adding physical layer
-			else{
-				player.UpdatePosition(Input,PhyLayer);
+
+			// detect if keyboard is hit
+			if(keyb.kbhit()){
+				key_nr = keyb.getch();
+				Input = key_nr;
+				// if 0 is hit, leave the game
+				if(Input == '0') {
+					state = "Exit";
+					break;
+				}
+				// otherwise, update position of player accordingly, but consider collision by adding physical layer
+				else {player.UpdatePosition(Input, PhyLayer);}
 			}
+			else {
+				// p means pass, represnt no input
+				Input = 'p';
+				player.UpdatePosition(Input, PhyLayer);
+			}
+
+			// update layers(1. reseting layers 2. putting object into new position 3. pile up layers)
+
+			scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, player);
+			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
+
+			gotoxy(1,1);
+			camera.colorPrintCam();
+			//camera.printCam();
+
+			// refresh with refresh rate of 1/deltatime
+			usleep(deltaTime);
+	
 		}
-		else{
-			// p means pass, represnt no input
-			Input = 'p';
-			player.UpdatePosition(Input,PhyLayer);
+
+		while (state == "UI") {
+			return 0;
 		}
 
-		// update layers(1. reseting layers 2. putting object into new position 3. pile up layers)
-		layer.ResetLayer();
-		layer1.ResetLayer();
-		layer2.ResetLayer();
-		layer_fg_color.ResetLayer();
-		layer1_fg_color.ResetLayer();
-		layer2_fg_color.ResetLayer();
-
-		layer1.WriteObject(player.figure,player.int_x_pos,player.int_y_pos,3,3);
-		layer1_fg_color.WriteObject(player.figure_fg_color,player.int_x_pos,player.int_y_pos,3,3);
-
-		layer.AddLayerOnTop(layer1);
-		layer.AddLayerOnTop(layer2);
-
-		layer_fg_color.AddLayerOnTop(layer1_fg_color);
-		layer_fg_color.AddLayerOnTop(layer2_fg_color);
-		camera.EdgeBlockFollowPlayer(layer,layer_fg_color,player);
-
-		gotoxy(1,1);
-		camera.colorPrintCam();
-		//camera.printCam();
-
-		// refresh with refresh rate of 1/deltatime
-		usleep(deltaTime);
-
+		while (state == "Conv") {
+			return 0;
+		}
+	
 	}
-
 	return 0;
 }
 
