@@ -34,6 +34,7 @@ class Layer{
 
 	// write a figure to layer
 	void WriteObject(vector<vector<char>> pic, int pos_x, int pos_y, int size_x, int size_y);
+	void WriteObject(vector<string> pic, int pos_x, int pos_y, int size_x, int size_y);
 	// check if the point is out of layer
 	bool OutOfLayer(int x,int y);
 

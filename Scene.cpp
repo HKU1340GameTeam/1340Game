@@ -1,3 +1,5 @@
+// Scene.cpp
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -9,7 +11,6 @@
 #include "Scene.h"
 
 using namespace std;
-
 
 void Scene::setName(string sn) { sceneName = sn; }
 

@@ -5,6 +5,7 @@
 
 #include "Layer.h"
 #include "Player.h"
+#include "Animator.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -24,6 +25,8 @@ public:
 	map<char, string> tp;
 	map<char, int> tpX;
 	map<char, int> tpY;
+
+	vector<Animator> animList;
 
 	void setName(string sn);
 	// map that contains char indicating which to trigger

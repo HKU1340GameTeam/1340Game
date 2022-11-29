@@ -9,9 +9,13 @@
 using namespace std;
 
 
-Animator::Animator(int PosX, int PosY){
+Animator::Animator(int PosX, int PosY, float updateInterval){
 	posX = PosX;
 	posY = PosY;
+	updateTime = updateInterval;
+}
+
+Animator::Animator(){
 }
 
 void Animator::ReadVideo(string FullPathName){

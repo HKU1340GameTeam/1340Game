@@ -13,7 +13,8 @@ using namespace std;
 class Animator{
 	public:
 
-		Animator(int PosX, int PosY);
+		Animator(int PosX, int PosY, float updateInterval);
+		Animator();
 
 		vector<vector<string>> video;
 		vector<string> currentFrame;
@@ -21,8 +22,8 @@ class Animator{
 		int videoSize;
 		int frameIndex = 0;
 		int frameCounter = 0;
-		int updateTime = 0.5;
-		int accumulatedTime = 0;
+		float updateTime = 0.5;
+		float accumulatedTime = 0;
 		int frameXSize = -1;
 		int frameYSize = -1;
 		int posX;

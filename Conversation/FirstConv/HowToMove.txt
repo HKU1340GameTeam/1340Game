@@ -1,0 +1,9 @@
+HowToMove
+listen
+TalkStarts
+A and D is for moving left and right
+Q and E is for moving constantly left and right
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

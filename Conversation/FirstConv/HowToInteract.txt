@@ -1,0 +1,9 @@
+HowToInteract
+listen
+TalkStarts
+Press I to Interact
+Press 0 to stop game
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

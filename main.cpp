@@ -11,6 +11,8 @@
 #include "kbhit.h"
 #include "Camera.h"
 #include "Scene.h"
+#include "Conversation.h"
+#include "Talk.h"
 using namespace std;
 
 // "kbhit.h" is from stackoverflow written by "orlov_dumitru"

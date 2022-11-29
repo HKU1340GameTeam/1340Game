@@ -1,0 +1,6 @@
+Conversation/FirstConv/Greetings.txt
+Conversation/FirstConv/Tutorial.txt
+Conversation/FirstConv/HowToMove.txt
+Conversation/FirstConv/HowToJump.txt
+Conversation/FirstConv/HowToInteract.txt
+Conversation/FirstConv/End.txt

@@ -25,8 +25,20 @@ void Layer::WriteObject(vector<vector<char>> pic, int pos_x, int pos_y, int size
 			}
 		}
 	}
-
 }
+
+void Layer::WriteObject(vector<string> pic, int pos_x, int pos_y, int size_x, int size_y){
+	for(int i=0;i<size_y;i++){
+		for(int j=0;j<size_x;j++){
+			if(!OutOfLayer(pos_x+j,pos_y+i)){
+				if(pic[i][j]!=' '){
+					layer[pos_y+i][pos_x+j] = pic[i][j];
+				}
+			}
+		}
+	}
+}
+
 bool Layer::OutOfLayer(int x,int y){
 	if(x >= LayerXSize-1 || x <= 0){
 		return true;

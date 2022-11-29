@@ -1,0 +1,10 @@
+Greetings
+listen
+TalkStarts
+Hello Player!
+Welcome to the game!
+This is a short tutorial for you to start
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

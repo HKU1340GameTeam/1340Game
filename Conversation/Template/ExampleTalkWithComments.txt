@@ -1,0 +1,10 @@
+Greetings//This is talk name(delete all the comments if you are using this template)
+listen// This the talk category
+TalkStarts// Keyword Marking the talk content
+Hello friends!
+Welcome to our game!
+Press I to continue conversation
+TalkEnds// Keyword Marking the talk ends
+NextTalk// After this keyword, write the talks that are going to come afterwards
+Tutorial
+NextTalkEnds

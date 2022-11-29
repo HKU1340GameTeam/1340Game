@@ -1,0 +1,9 @@
+HowToJump
+listen
+TalkStarts
+Press Space to jump
+Press moving key and then immediately Space to jump forward or backward
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds
