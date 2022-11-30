@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include <vector>
+#include <fstream>
 #include "Layer.h"
 #include "AboveHeadComment.h"
 using namespace std;
@@ -129,6 +130,7 @@ class Player{
 		char emptyMove = 'p'; // move that means nothing
 		char dash = ' ';
 
+		string InputMapPath = "Player/KeyboardInput.txt";
 		// Raycast Related
 		char raycast_x_ignore = 'p';// p for platform
 
@@ -149,6 +151,8 @@ class Player{
 		// DashControl
 		int DashTimeEnd();
 
+		// Read Input Map
+		void ReadInputMap();
 
 		// Position Control
 		int UpdatePosition(char Input,Layer PhyLayer);

@@ -6,10 +6,12 @@
 #include "AboveHeadComment.h"
 #include <iostream>
 #include <cmath>
+#include <fstream>
 using namespace std;
 
 
 Player::Player(float vX,float vY,float posX,float posY,float spX,float spY,float auto_Move_Speed, string FullCommentPath){
+	ReadInputMap();
 	velocity.x=vX;
 	velocity.y=vY;
 	position.x=posX;
@@ -21,6 +23,7 @@ Player::Player(float vX,float vY,float posX,float posY,float spX,float spY,float
 
 	autoMoveSpeed = auto_Move_Speed;
 	abc = AboveHeadComment(int_x_pos, int_y_pos, FullCommentPath);
+	abc.comments[0][6] = teleport;
 }
 
 
@@ -454,6 +457,137 @@ void Player::PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer){
 	}
 }
 
+void Player::ReadInputMap(){
+	ifstream fin;
+	fin.open(InputMapPath);
+	if(fin.fail()){
+		cerr << "failure to read file in ReadInputMap" << InputMapPath << endl;
+		exit(1);
+	}
+
+	string line;
+	// leftMove
+	if(getline(fin,line)){
+
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+
+	if(getline(fin,line)){
+		leftMove = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+
+	// rightMove
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+
+	// lmove
+	if(getline(fin,line)){
+		rightMove = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+	if(getline(fin,line)){
+		lmove= line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// rmove
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		rmove= line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// standMove
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		standMove = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// jump
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		jump = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// emptyMove
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		emptyMove = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// dash
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		dash = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+
+	// teleport
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
+	}
+	if(getline(fin,line)){
+		teleport = line[0];
+	}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+	fin.close();
+}
 
 
 

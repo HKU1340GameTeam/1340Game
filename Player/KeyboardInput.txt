@@ -1,0 +1,18 @@
+constant left Move
+o
+constant right Move
+[
+left move
+l
+right move
+'
+stand move
+;
+jump
+3
+empty move
+p
+dash
+ 
+teleport
+t
