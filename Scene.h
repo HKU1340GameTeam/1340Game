@@ -6,6 +6,7 @@
 #include "Layer.h"
 #include "Player.h"
 #include "Animator.h"
+#include "NPC.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -27,8 +28,17 @@ public:
 	map<char, int> tpY;
 
 	vector<Animator> animList;
+	vector<NPC> NPCList;
+	int NPCNum;
 
 	string SceneFolderName = "Scenes";
+
+	void ReadNPCs(string NPCPath);
+	void ReadAnimators(string AnimPath);
+
+	int NPCsDetect(Player player);
+	void WriteNPCsToLayer(Layer &layer,Layer &layerColor);
+	void ShowNPCsComment(Player player, Layer &layer);
 
 	void setName(string sn);
 	// map that contains char indicating which to trigger

@@ -8,3 +8,5 @@
 ./../SCRIPTS/makeEmptyScene $1 $2 editorPhyScene.txt
 ./../SCRIPTS/makeEmptyScene $1 $2 sceneCombined.txt
 ./../SCRIPTS/makeEmptyScene $1 $2 trigger.txt
+touch AnimList.txt
+touch NPCList.txt

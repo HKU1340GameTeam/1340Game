@@ -8,9 +8,62 @@
 #include <map>
 #include "Layer.h"
 #include "Player.h"
+#include "NPC.h"
+#include "Animator.h"
 #include "Scene.h"
 
 using namespace std;
+
+
+void Scene::ReadNPCs(string NPCPath){
+	ifstream fin;
+	fin.open(NPCPath);
+	if(fin.fail()){
+		cerr << "failure to open the npc file from Scene" << endl;
+		exit(1);
+	}
+	string line;
+	while(getline(fin,line)){
+		NPCList.push_back(NPC(line));
+	}
+	NPCNum = NPCList.size();
+	fin.close();
+
+}
+
+int Scene::NPCsDetect(Player player){
+	for(int i=0;i<NPCNum;i++){
+		if(NPCList[i].DetectPlayer(player)){
+			return i;
+		}
+	}
+	return -1;
+}
+void Scene::WriteNPCsToLayer(Layer &layer,Layer &layerColor){
+	for(int i=0;i<NPCNum;i++){
+		NPCList[i].WriteNPCtoLayer(layer,layerColor);
+	}
+}
+
+void Scene::ShowNPCsComment(Player player, Layer &layer){
+	for(int i=0;i<NPCNum;i++){
+		NPCList[i].ShowComment(player,layer);
+	}
+}
+
+void Scene::ReadAnimators(string AnimatorPath){
+	//ifstream fin;
+	//fin.open(AnimatorPath);
+	//if(fin.fail()){
+		//cerr << "failure to open the anim file from Scene" << endl;
+		//exit(1);
+	//}
+	//string line;
+	//while(getline(fin,line)){
+		//AnimatorPath.push_back(NPC(line));
+	//}
+	//fin.close();
+}
 
 void Scene::setName(string sn) { sceneName = sn; }
 
@@ -57,6 +110,11 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 		exit(1);
 	}
 	folderName = SceneFolderName + "/" + sceneName + "/";
+
+	animList.clear();
+	NPCList.clear();
+
+	ReadNPCs(folderName+"NPCList.txt");
 
 	// Need to reset layer to empty
 	l0.ReadNewLayerFromFile(folderName+"emptyScene.txt");

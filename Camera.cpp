@@ -132,7 +132,42 @@ void Camera::EdgeBlockFollowPlayer(Layer layer, Layer fgColorLayer, Player playe
 
 }
 
+void Camera::CenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player){
+	int pixel_x_pos;
+	int pixel_y_pos;
+	y_pos = player.int_y_pos - centerPlayerYOffset;
+	x_pos = player.int_x_pos - centerPlayerXOffset;
+	for(int i=1;i<CamYSize-1;i++){
+		for(int j=1;j<CamXSize-1;j++){
+			pixel_x_pos = x_pos + j;
+			pixel_y_pos = y_pos + i;
+			if(!layer.OutOfLayer(pixel_x_pos,pixel_y_pos)){
+				try{
+					cam[i][j] = layer.layer[pixel_y_pos][pixel_x_pos];
+					fgColorCam[i][j] = fgColorLayer.layer[pixel_y_pos][pixel_x_pos];
+				}
+				catch(int num){
+					cout << pixel_y_pos << ' ' << pixel_x_pos << endl;
+					perror("im confused");
+				}
+			}
+			else{
+				cam[i][j] = '*';
+				fgColorCam[i][j] = ' ';
+			}
+		}
+	}
+}
 
+bool Camera::OutOfCamera(int x,int y){
+	if(x >= CamXSize-1 || x <= 0){
+		return true;
+	}
+	if(y >= CamYSize-1 || y <= 0){
+		return true;
+	}
+	return false;
+}
 
 
 

@@ -23,6 +23,10 @@ class Camera{
 		// MaxXLength is the horizontal Length of the Camera, ..Y.. is the vertical one
 		int CamXSize = 178;
 		int CamYSize = 43;
+
+		// Offset putting the player to center
+		int centerPlayerXOffset = 86;
+		int centerPlayerYOffset = 20;
 		
 		// Cam that records figure
 		vector<string> cam;
@@ -35,8 +39,12 @@ class Camera{
 		void colorPrintCam();
 		// move to follow the exact position of player
 		void FollowPlayer(Layer layer,Player player);
+		// move to follow the exact position of player
+		void CenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
 		// move to follow player but will not be out of edge
 		void EdgeBlockFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
+		// Check if the point is out of camera
+		bool OutOfCamera(int x,int y);
 
 };
 

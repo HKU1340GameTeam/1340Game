@@ -1,0 +1,1 @@
+Scenes/FirstScene/NPC/mentor.txt

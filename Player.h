@@ -46,9 +46,9 @@ class Player{
 
 		// dash control
 		bool dashing = false;
-		float dashLastTime = 0.25;
+		float dashLastTime = 0.20;
 		float dashingTime = 0.0;
-		float dashSpeed = 100.0;
+		float dashSpeed = 75.0;
 		int dashIndicator;// 1 for dashing, 0 for end of dash, -1 for not dashing
 		int dashNum = 1;
 		int dashNumAvailable = dashNum;

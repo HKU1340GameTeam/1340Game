@@ -1,7 +1,7 @@
 // Animator.h
 
 #ifndef _animator_h
-#define __animator_h
+#define _animator_h
 
 #include "common.h"
 #include <vector>
