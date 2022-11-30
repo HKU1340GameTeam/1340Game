@@ -21,7 +21,7 @@ void Scene::readTrigger() {
 	// tpX.clear();
 	// tpY.clear();
 
-	string filename = "Scenes/"+sceneName+"/trigger.txt";
+	string filename = SceneFolderName + "/" + sceneName + "/" + "trigger.txt";
 	ifstream fin;
 	fin.open(filename.c_str());
 
@@ -56,7 +56,7 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 		cerr << "No scene name given!" << endl;
 		exit(1);
 	}
-	folderName = "Scenes/"+sceneName+"/";
+	folderName = SceneFolderName + "/" + sceneName + "/";
 
 	// Need to reset layer to empty
 	l0.ReadNewLayerFromFile(folderName+"emptyScene.txt");
@@ -76,7 +76,6 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 	fin.open(folderName+"triggerMap.txt");
 	if (fin.fail()) {
 		cerr << "Cannot load scene <" << sceneName << ">; Reason: failed opening file.";
-		// throw "Cannot open file.";
 		exit(1);
 	}
 
@@ -122,10 +121,10 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 }
 
 
-bool Scene::switchScene(Player &p) {
+bool Scene::switchScene(Player &p, char Input) {
 	// char loc = trigger[p.position.y][p.position.x];
 	char loc = trigger[p.int_y_pos][p.int_x_pos];
-	if (loc == ' ' || loc == '*') { return false; }
+	if (loc == ' ' || loc == '*' || Input != p.teleport) { return false; }
 	else {
 		if (tp.count(loc) > 0) {
 			setName(tp[loc]);
@@ -142,23 +141,20 @@ bool Scene::switchScene(Player &p) {
 }
 
 
-void Scene::resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c, Player p) {
+void Scene::resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c) {
 	l0.ResetLayer();
 	l1.ResetLayer();
 	l2.ResetLayer();
 	fgc.ResetLayer();
 	l1c.ResetLayer();
 	l2c.ResetLayer();
+}
 
-	l1.WriteObject(p.figure, p.int_x_pos, p.int_y_pos, 3, 3);
-	l1c.WriteObject(p.figure_fg_color, p.int_x_pos, p.int_y_pos, 3, 3);
 
+void Scene::pileLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c){
 	fgc.AddLayerOnTop(l1c);
 	fgc.AddLayerOnTop(l2c);
 	l0.AddLayerOnTop(l1);
 	l0.AddLayerOnTop(l2);
-
 }
-
-
 

@@ -3,9 +3,26 @@
 #include "common.h"
 #include "Player.h"
 #include "Layer.h"
+#include "AboveHeadComment.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
+
+
+Player::Player(float vX,float vY,float posX,float posY,float spX,float spY,float auto_Move_Speed, string FullCommentPath){
+	velocity.x=vX;
+	velocity.y=vY;
+	position.x=posX;
+	position.y=posY;
+	speed.x=spX;
+	speed.y=spY;
+	int_x_pos = position.x;
+	int_y_pos = position.y;
+
+	autoMoveSpeed = auto_Move_Speed;
+	abc = AboveHeadComment(int_x_pos, int_y_pos, FullCommentPath);
+}
+
 
 void Player::toggleHiddenMove(char Input){
 
@@ -274,19 +291,6 @@ int Player::DashTimeEnd(){
 }
 
 
-Player::Player(float vX,float vY,float posX,float posY,float spX,float spY,float auto_Move_Speed){
-	velocity.x=vX;
-	velocity.y=vY;
-	position.x=posX;
-	position.y=posY;
-	speed.x=spX;
-	speed.y=spY;
-	int_x_pos = position.x;
-	int_y_pos = position.y;
-
-	autoMoveSpeed = auto_Move_Speed;
-}
-
 int Player::Raycast(char direction,Layer PhyLayer){
 	int minimum = 1000;
 	int x_pos=int_x_pos;
@@ -441,6 +445,14 @@ void Player::UpdateFigure(){
 }
 
 
+void Player::PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer){
+	if(trigger[int_y_pos][int_x_pos]!=' ' && trigger[int_y_pos][int_x_pos]!='*'){
+		abc.currentCommentIndex = 0;
+		abc.objectPositionX = int_x_pos;
+		abc.objectPositionY = int_y_pos;
+		abc.PrintComment(scene2Layer);
+	}
+}
 
 
 

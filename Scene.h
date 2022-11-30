@@ -28,6 +28,8 @@ public:
 
 	vector<Animator> animList;
 
+	string SceneFolderName = "Scenes";
+
 	void setName(string sn);
 	// map that contains char indicating which to trigger
 	void readTrigger(); // fn = filename
@@ -39,9 +41,11 @@ public:
 	// after: pair of <char, scene to trigger (num to return)>
 	void loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c, Layer &Phy);
 	// return 0 if keep playing scene
-	bool switchScene(Player &p); //keeping playing
-	// reset player & put player on again
-	void resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c, Player p);
+	bool switchScene(Player &p, char Input); //keeping playing
+	// reset layers
+	void resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c);
+	// pile up layer
+	void pileLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c);
 
 };
 

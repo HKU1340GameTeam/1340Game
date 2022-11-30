@@ -13,6 +13,7 @@
 #include "Scene.h"
 #include "Conversation.h"
 #include "Talk.h"
+#include "AboveHeadComment.h"
 using namespace std;
 
 // "kbhit.h" is from stackoverflow written by "orlov_dumitru"
@@ -41,22 +42,7 @@ int main(){
 	Camera camera = Camera();
 
 	// initialize player
-	Player player(0,0,5.0,5.0,60.0,35.0,30.0);
-
-	/*
-	// read the shape of scene
-	layer.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
-	layer1.ReadLayerFromFile("Scenes/"+SceneName+"/scene1.txt");
-	layer2.ReadLayerFromFile("Scenes/"+SceneName+"/scene2.txt");
-
-	// read the color of scene
-	layer_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/emptyScene.txt");
-	layer1_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/fgColor_scene1.txt");
-	layer2_fg_color.ReadLayerFromFile("Scenes/"+SceneName+"/fgColor_scene2.txt");
-
-	// read the layer for controling collision
-	PhyLayer.ReadLayerFromFile("Scenes/"+SceneName+"/phyScene.txt");
-	*/
+	Player player(0,0,5.0,5.0,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
 	string sceneName = "FirstScene";
@@ -67,7 +53,7 @@ int main(){
 	while (state != "Exit") {
 		while (state == "Normal") {
 
-			if (scene.switchScene(player)) {
+			if (scene.switchScene(player,Input)) {
 				// cout << 'd' << endl;
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 			}
@@ -96,12 +82,19 @@ int main(){
 
 			// update layers(1. reseting layers 2. putting object into new position 3. pile up layers)
 
-			scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, player);
+			scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
+
+			layer1.WriteObject(player.figure, player.int_x_pos, player.int_y_pos, 3, 3);
+			layer1_fg_color.WriteObject(player.figure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
+			player.PrintAboveHeadComment(scene.trigger,layer2);
+
+			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
 
 			gotoxy(1,1);
 			camera.colorPrintCam();
 			//camera.printCam();
+			cout << scene.trigger[player.int_y_pos][player.int_x_pos] << endl;
 
 			// refresh with refresh rate of 1/deltatime
 			usleep(deltaTime);

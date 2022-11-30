@@ -1,7 +1,7 @@
 FLAGS=-ggdb3 -Werror -Wall -pedantic-errors -std=c++11
 
 
-main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o Scene.o Talk.o Conversation.o
+main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o Scene.o Talk.o Conversation.o AboveHeadComment.o
 	g++ $(FLAGS) $^ -o $@
 
 main.o: main.cpp common.h Layer.h Player.h kbhit.h Camera.h
@@ -10,7 +10,7 @@ main.o: main.cpp common.h Layer.h Player.h kbhit.h Camera.h
 Layer.o: Layer.cpp Layer.h common.h
 	g++ $(FLAGS) -c $<
 
-Player.o: Player.cpp Player.h Layer.h common.h
+Player.o: Player.cpp Player.h Layer.h common.h AboveHeadComment.h
 	g++ $(FLAGS) -c $<
 
 kbhit.o: kbhit.cpp kbhit.h
@@ -32,6 +32,9 @@ Talk.o: Talk.cpp Talk.h
 	g++ $(FLAGS) -c $<
 
 Scene.o: Scene.cpp Scene.h Layer.h Player.h Animator.h
+	g++ $(FLAGS) -c $<
+
+AboveHeadComment.o: AboveHeadComment.cpp AboveHeadComment.h Layer.h
 	g++ $(FLAGS) -c $<
 
 common.o: common.cpp common.h

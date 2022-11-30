@@ -6,10 +6,16 @@
 #include "common.h"
 #include <vector>
 #include "Layer.h"
+#include "AboveHeadComment.h"
 using namespace std;
 
 class Player{
 	public:
+		// Constructor
+        Player(float vX,float vY,float posX,float posY,float spX,float spY, float auto_Move_Speed, string FullCommentPath);
+
+		AboveHeadComment abc;
+
 		// the velocity is speed plus direction of the movement
 		vec velocity;
 		// position is the left top corner's position of the figure
@@ -26,6 +32,9 @@ class Player{
 
 		// facing 1 for right, -1 for left
 		int facing = 0;
+
+		// teleport control
+		char teleport = 't';
 
 		// Jump control
 		bool standingOnGround = false;
@@ -53,12 +62,12 @@ class Player{
 										{"y y"}};
 		// Normal Figure
 		vector<string> normalFigure={{" 0 "},
-						       {"/|\\"},
-						       {"/ \\"}};
+									{"/|\\"},
+									{"/ \\"}};
 		// Normal Figure foreground color
 		vector<string> normalFigure_fg_color={{" y "},
-										{"yyy"},
-										{"y y"}};
+											  {"yyy"},
+											  {"y y"}};
 		// right dash figure
 		vector<string> rightDashFigure={{"--0"},
 										{"-/ "},
@@ -76,15 +85,15 @@ class Player{
 												{" yy"},
 												{"yyy"}};
 		// jump figure
-		vector<string> jumpFigure={{"\\0/"},
-								   {" | "},
+		vector<string> jumpFigure={{" 0 "},
+								   {"/|\\"},
 								   {"/ \\"}};
 		// jump figure color
-		vector<string> jumpFigure_fg_color={{"yyy"},
-											{" y "},
+		vector<string> jumpFigure_fg_color={{" y "},
+											{"yyy"},
 											{"y y"}};
 		// right jump figure
-		vector<string> rightJumpFigure={{" 0/"},
+		vector<string> rightJumpFigure={{" 0 "},
 										{"/| "},
 										{"/ >"}};
 		// right jump figure color
@@ -92,9 +101,9 @@ class Player{
 											{"yy "},
 											{"y y"}};
 		// left jump figure
-		vector<string> leftJumpFigure={{"\\0 "},
-										{" |\\"},
-										{"< \\"}};
+		vector<string> leftJumpFigure={{" 0 "},
+									   {" |\\"},
+									   {"< \\"}};
 		// left jump figure color
 		vector<string> leftJumpFigure_fg_color={{"yy "},
 												{" yy"},
@@ -140,8 +149,6 @@ class Player{
 		// DashControl
 		int DashTimeEnd();
 
-		// Constructor
-        Player(float vX,float vY,float posX,float posY,float spX,float spY, float auto_Move_Speed);
 
 		// Position Control
 		int UpdatePosition(char Input,Layer PhyLayer);
@@ -161,6 +168,8 @@ class Player{
 		// Figure Update
 		void UpdateFigure();
 
+		// Above Head Comment Control
+		void PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer);
 };
 
 #endif
