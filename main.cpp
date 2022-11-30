@@ -82,11 +82,15 @@ int main(){
 					break;
 				}
 				// otherwise, update position of player accordingly, but consider collision by adding physical layer
-				else {player.UpdatePosition(Input, PhyLayer);}
+				else{
+					player.UpdateFigure();
+					player.UpdatePosition(Input, PhyLayer);
+				}
 			}
 			else {
 				// p means pass, represnt no input
 				Input = 'p';
+				player.UpdateFigure();
 				player.UpdatePosition(Input, PhyLayer);
 			}
 

@@ -34,20 +34,60 @@ void Player::toggleHiddenMove(char Input){
 		}
 	}
 }
-void Player::InputToVelocity(char Input){
+int Player::InputToVelocity(char Input){
 
 	jumpActivated = false;
 
 	toggleHiddenMove(Input);
 
+	dashIndicator = DashTimeEnd();
+	if(dashIndicator != -1){
+		if(dashIndicator == 1){
+			if(facing == 1){
+				velocity.x = dashSpeed;
+			}
+			else{
+				velocity.x = -dashSpeed;
+			}
+			velocity.y = 0;
+			TimeToRereshAutoMove(Input);
+			return 2;
+		}
+		else{
+			dashing = false;
+		}
+	}
+	else{
+		if(Input == dash){
+			dashing = true;
+			if(facing == 1){
+				velocity.x = dashSpeed;
+			}
+			else{
+				velocity.x = -dashSpeed;
+			}
+			velocity.y = 0;
+			TimeToRereshAutoMove(Input);
+			return 2;
+		}
+	}
 	if(Input == jump){
 		if(standingOnGround==true){
 			velocity.y = -speed.y;
 			standingOnGround = false;
 			jumpActivated = true;
 		}
+		else{
+			if(jumpAvailable > 0){
+				jumpAvailable --;
+				velocity.y = -speed.y;
+				standingOnGround = false;
+				jumpActivated = true;
+			}
+		}
 	}
 	else if(Input==leftMove || Input==lmove){
+		facing = -1;
 		justLanded = false;
 		if(prvInput==rightMove || prvInput==leftMove){
 			velocity.x = 0;
@@ -57,6 +97,7 @@ void Player::InputToVelocity(char Input){
 		}
 	}
 	else if(Input==rightMove || Input==rmove){
+		facing = 1;
 		justLanded = false;
 		if(prvInput==leftMove || prvInput==rightMove){
 			velocity.x = 0;
@@ -82,9 +123,8 @@ void Player::InputToVelocity(char Input){
 	else if(hiddenMove==rightMove){
 		velocity.x = autoMoveSpeed;
 	}
+	return 1;
 	
-
-
 }
 
 void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
@@ -133,6 +173,8 @@ void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
 		position.y = int_y_pos;
 
 		hiddenMove = emptyMove;
+
+		jumpAvailable = extraJump;
 	}
 	else if(-delta_y >= distanceToCeil && velocity.y <= 0){
 
@@ -156,7 +198,7 @@ int Player::UpdatePosition(char Input,Layer PhyLayer){
 	InputToVelocity(Input);
 
 	// update velocity Y
-	if(standingOnGround==false && jumpActivated==false){
+	if(standingOnGround==false && jumpActivated==false && dashing == false){
 		velocity.y += g * deltaSecond;
 	}
 
@@ -208,6 +250,23 @@ bool Player::TimeToRereshAutoMove(char Input){
 		TimeToRefreshAutoMoveInSecond_Time_Counter = 0.0;
 		AutoMoveLabel=emptyMove;
 		return false;
+	}
+}
+
+// 1 for dashing, 0 for dash time end, -1 for not dashing
+int Player::DashTimeEnd(){
+	if(dashing == true){
+		dashingTime += deltaSecond;
+		if(dashingTime >= dashLastTime){
+			dashingTime = 0;
+			return 0;
+		}
+		else{
+			return 1;
+		}
+	}
+	else{
+		return -1;
 	}
 }
 
@@ -347,6 +406,36 @@ bool Player::PlayerOutOfLayer(int x_pos,int y_pos,Layer PhyLayer){
 }
 
 
+void Player::UpdateFigure(){
+	if(dashing == true){
+		if(facing == 1){
+			figure = rightDashFigure;
+			figure_fg_color = rightDashFigure_fg_color;
+		}
+		else{
+			figure = leftDashFigure;
+			figure_fg_color = leftDashFigure_fg_color;
+		}
+	}
+	else if(velocity.y < 0){
+		if(velocity.x == 0){
+			figure = jumpFigure;
+			figure_fg_color = jumpFigure_fg_color;
+		}
+		else if(facing == 1){
+			figure = rightJumpFigure;
+			figure_fg_color = rightJumpFigure_fg_color;
+		}
+		else if(facing == -1){
+			figure = leftJumpFigure;
+			figure_fg_color = leftJumpFigure_fg_color;
+		}
+	}
+	else{
+		figure = normalFigure;
+		figure_fg_color = normalFigure_fg_color;
+	}
+}
 
 
 
