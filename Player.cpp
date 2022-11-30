@@ -58,8 +58,9 @@ int Player::InputToVelocity(char Input){
 		}
 	}
 	else{
-		if(Input == dash){
+		if(Input == dash && dashNumAvailable > 0){
 			dashing = true;
+			dashNumAvailable--;
 			if(facing == 1){
 				velocity.x = dashSpeed;
 			}
@@ -175,6 +176,8 @@ void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
 		hiddenMove = emptyMove;
 
 		jumpAvailable = extraJump;
+
+		dashNumAvailable = dashNum;
 	}
 	else if(-delta_y >= distanceToCeil && velocity.y <= 0){
 

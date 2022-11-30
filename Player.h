@@ -40,6 +40,8 @@ class Player{
 		float dashingTime = 0.0;
 		float dashSpeed = 100.0;
 		int dashIndicator;// 1 for dashing, 0 for end of dash, -1 for not dashing
+		int dashNum = 1;
+		int dashNumAvailable = dashNum;
 
 		// figure is the player's appearance
 		vector<string> figure={{" 0 "},
