@@ -3,6 +3,7 @@ listen
 TalkStarts
 L [l] and ['] arrre forrr moving left and rrright
 [o] and left square bracket [[] are for moving constantly left and right
+Most Imporrrtantly, Space [ ] is-a forrr dash-a!
 TalkEnds
 NextTalk
 Tutorial
