@@ -1,2 +1,3 @@
 2 SecondScene 50 170
 3 ThirdScene 150 70
+c ThirdScene 150 70

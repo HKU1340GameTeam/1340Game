@@ -449,7 +449,7 @@ void Player::UpdateFigure(){
 
 
 void Player::PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer){
-	if(trigger[int_y_pos][int_x_pos]!=' ' && trigger[int_y_pos][int_x_pos]!='*'){
+	if(trigger[int_y_pos][int_x_pos]!=' ' && trigger[int_y_pos][int_x_pos]!='*' && !(trigger[int_y_pos][int_x_pos] > 57 || trigger[int_y_pos][int_x_pos] < 48)){
 		abc.currentCommentIndex = 0;
 		abc.objectPositionX = int_x_pos;
 		abc.objectPositionY = int_y_pos;

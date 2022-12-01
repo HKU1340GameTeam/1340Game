@@ -215,6 +215,24 @@ bool Scene::switchScene(Player &p, char Input) {
 	return false;
 }
 
+bool Scene::forceSwitchScene(Player &p) {
+	// char loc = trigger[p.position.y][p.position.x];
+	char loc = trigger[p.int_y_pos][p.int_x_pos];
+	if (loc == ' ' || loc == '*' || (loc <= 57 && loc >= 48)) { return false; }
+	else {
+		if (tp.count(loc) > 0) {
+			setName(tp[loc]);
+			// Need?
+			p.position.x = tpX[loc];
+			p.position.y = tpY[loc];
+			// Mistake: to change any property of a para, need &
+			p.int_x_pos = tpX[loc];
+			p.int_y_pos = tpY[loc];
+			return true;
+		}
+	}
+	return false;
+}
 
 void Scene::resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c) {
 	l0.ResetLayer();

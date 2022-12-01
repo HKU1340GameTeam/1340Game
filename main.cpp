@@ -64,7 +64,9 @@ int main(){
 		while (state == "Normal") {
 			NPCDetectIndex = scene.NPCsDetect(player);
 			if (scene.switchScene(player,Input)) {
-				// cout << 'd' << endl;
+				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+			}
+			else if (scene.forceSwitchScene(player)) {
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 			}
 

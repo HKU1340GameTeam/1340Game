@@ -54,7 +54,11 @@ public:
 	// after: pair of <char, scene to trigger (num to return)>
 	void loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c, Layer &Phy);
 	// return 0 if keep playing scene
+	// teleport player away when player choosed to 
 	bool switchScene(Player &p, char Input); //keeping playing
+	// return 0 if keep playing scene
+	// forces player to be teleported away
+	bool forceSwitchScene(Player &p);
 	// reset layers
 	void resetLayer(Layer &l0, Layer &l1, Layer &l2, Layer &fgc, Layer &l1c, Layer &l2c);
 	// pile up layer
