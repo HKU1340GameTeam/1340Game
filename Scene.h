@@ -32,7 +32,7 @@ public:
 	vector<NPC> NPCList;
 	int NPCNum;
 
-	string SceneFolderName = "Scenes";
+	string SceneFolderName = "GameScenes";
 
 	void ReadNPCs(string NPCPath);
 	void ReadAnimators(string AnimPath);

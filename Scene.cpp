@@ -19,6 +19,7 @@ void Scene::ReadNPCs(string NPCPath){
 	ifstream fin;
 	fin.open(NPCPath);
 	if(fin.fail()){
+		cerr << NPCPath << endl;
 		cerr << "failure to open the npc file from Scene" << endl;
 		exit(1);
 	}
@@ -154,6 +155,7 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 	fin.open(folderName+"triggerMap.txt");
 	if (fin.fail()) {
 		cerr << "Cannot load scene <" << sceneName << ">; Reason: failed opening file.";
+		cerr << folderName << endl;
 		exit(1);
 	}
 
@@ -201,6 +203,9 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 
 bool Scene::switchScene(Player &p, char Input) {
 	// char loc = trigger[p.position.y][p.position.x];
+	//if((int)trigger.size()==0){
+		//return false;
+	//}
 	char loc = trigger[p.int_y_pos][p.int_x_pos];
 	if (loc == ' ' || loc == '*' || Input != p.teleport) { return false; }
 	else {
@@ -220,6 +225,9 @@ bool Scene::switchScene(Player &p, char Input) {
 
 bool Scene::forceSwitchScene(Player &p) {
 	// char loc = trigger[p.position.y][p.position.x];
+	//if((int)trigger.size()==0){
+		//return false;
+	//}
 	char loc = trigger[p.int_y_pos][p.int_x_pos];
 	if (loc == ' ' || loc == '*' || (loc <= 57 && loc >= 48)) { return false; }
 	else {

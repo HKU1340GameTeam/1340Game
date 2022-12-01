@@ -47,7 +47,7 @@ int main(){
 	Player player(0,0,5.0,5.0,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
-	string sceneName = "FirstScene";
+	string sceneName = "BirthScene";
 	scene.setName(sceneName);
 	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 
@@ -138,8 +138,6 @@ int main(){
 
 			gotoxy(1,1);
 			camera.colorPrintCam();
-
-			cout << scene.NPCList[1].name << endl;
 
 			// refresh with refresh rate of 1/deltatime
 			usleep(deltaTime);

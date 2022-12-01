@@ -1,0 +1,10 @@
+Greetings
+listen
+TalkStarts
+Hello friends!
+Welcome to our game!
+Press I to continue conversation
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds
