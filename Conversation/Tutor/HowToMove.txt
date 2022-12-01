@@ -1,0 +1,9 @@
+HowToMove
+listen
+TalkStarts
+L [l] and ['] arrre forrr moving left and rrright
+[o] and left square bracket [[] are for moving constantly left and right
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

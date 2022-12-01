@@ -1,0 +1,2 @@
+GameScenes/BirthScene/Conv/Explorer/Greetings.txt
+GameScenes/BirthScene/Conv/Explorer/End.txt

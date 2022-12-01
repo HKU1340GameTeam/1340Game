@@ -1,0 +1,2 @@
+9 52 0.05 r
+Animation/fire1/video.txt

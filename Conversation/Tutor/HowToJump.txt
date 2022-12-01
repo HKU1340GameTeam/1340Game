@@ -1,0 +1,10 @@
+HowToJump
+listen
+TalkStarts
+Prrres-s trrree [3] to joomp
+Prrres-s moving key and den im-mediately Space to joomp forrrwarrrd orrr backwarrrd
+You ave DOUBLE JOOMP!
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

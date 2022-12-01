@@ -1,0 +1,11 @@
+Greetings
+listen
+TalkStarts
+el-lo Playoi-a!
+Welcome to de game!
+Tis is-a a shorrrt tootorrrial forrr you
+Get RRReady Now-a!
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

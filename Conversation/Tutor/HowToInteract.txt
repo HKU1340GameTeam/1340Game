@@ -1,0 +1,10 @@
+HowToInteract
+listen
+TalkStarts
+Prrres-s [r] to Intoiact
+Prrres-s [t] to Teleporrrt
+Prrres-s zoio [0] to stop game
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

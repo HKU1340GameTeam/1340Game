@@ -23,6 +23,9 @@ using namespace std;
 int key_nr;
 char Input;
 keyboard keyb;
+
+int PlayerXPosition = 5;
+int PlayerYPosition = 5;
 int main(){
 
 	string state = "Normal";
@@ -44,7 +47,7 @@ int main(){
 	Camera camera = Camera();
 
 	// initialize player
-	Player player(0,0,5.0,5.0,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
+	Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
 	string sceneName = "BirthScene";
@@ -125,13 +128,13 @@ int main(){
 
 			scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 
-			layer1.WriteObject(player.figure, player.int_x_pos, player.int_y_pos, 3, 3);
-			layer1_fg_color.WriteObject(player.figure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
-			player.PrintAboveHeadComment(scene.trigger,layer2);
-
 			scene.WriteNPCsToLayer(layer1,layer1_fg_color);
 			scene.ShowNPCsComment(player,layer1);
 			scene.WriteAnimatorsToLayer(layer1,layer1_fg_color);
+
+			layer1.WriteObject(player.figure, player.int_x_pos, player.int_y_pos, 3, 3);
+			layer1_fg_color.WriteObject(player.figure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
+			player.PrintAboveHeadComment(scene.trigger,layer2);
 
 			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);

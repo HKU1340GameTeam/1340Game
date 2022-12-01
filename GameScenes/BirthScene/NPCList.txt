@@ -1,0 +1,2 @@
+GameScenes/BirthScene/NPC/mentor.txt
+GameScenes/BirthScene/NPC/explorer.txt

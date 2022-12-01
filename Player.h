@@ -42,7 +42,7 @@ class Player{
 		bool jumpActivated = false;
 		bool justLanded = false;
 		int extraJump = 1;
-		int jumpAvailable = extraJump;
+		int jumpAvailable = extraJump+1;
 
 		// dash control
 		bool dashing = false;

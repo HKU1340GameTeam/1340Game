@@ -1,0 +1,15 @@
+Tutorial
+choice
+TalkStarts
+Lets check de fol-lowing
+1 ow to move
+2 ow to joomp
+3 ow to intoiact
+4 Al-l checked
+TalkEnds
+NextTalk
+HowToMove
+HowToJump
+HowToInteract
+End
+NextTalkEnds

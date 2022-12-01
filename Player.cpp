@@ -93,20 +93,28 @@ int Player::InputToVelocity(char Input){
 		}
 	}
 	if(Input == jump){
-		if(standingOnGround==true){
+		if(jumpAvailable > 0){
+			jumpAvailable --;
 			velocity.y = -speed.y;
 			standingOnGround = false;
 			jumpActivated = true;
 		}
-		else{
-			if(jumpAvailable > 0){
-				jumpAvailable --;
-				velocity.y = -speed.y;
-				standingOnGround = false;
-				jumpActivated = true;
-			}
-		}
 	}
+	//if(Input == jump){
+		//if(standingOnGround==true){
+			//velocity.y = -speed.y;
+			//standingOnGround = false;
+			//jumpActivated = true;
+		//}
+		//else{
+			//if(jumpAvailable > 0){
+				//jumpAvailable --;
+				//velocity.y = -speed.y;
+				//standingOnGround = false;
+				//jumpActivated = true;
+			//}
+		//}
+	//}
 	else if(Input==leftMove || Input==lmove){
 		facing = -1;
 		justLanded = false;
@@ -195,7 +203,7 @@ void Player::CorrectPosition(int new_x_pos,int new_y_pos,Layer PhyLayer){
 
 		hiddenMove = emptyMove;
 
-		jumpAvailable = extraJump;
+		jumpAvailable = extraJump + 1;
 
 		dashNumAvailable = dashNum;
 	}
