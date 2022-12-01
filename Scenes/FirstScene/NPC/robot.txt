@@ -1,0 +1,30 @@
+Name:
+Bot
+Conversation Path:
+Scenes/FirstScene/Conv/BotConv/convList.txt
+Figure:
+ \~/ 
+   l 
+1o_o)
+ / 7 
+Figure Color:
+ rrr 
+   r 
+rrrrr
+ r r 
+Position X:
+239
+Position Y:
+37
+leftTriggerRange:
+10
+rightTriggerRange:
+15
+upTriggerRange:
+5
+downTriggerRange:
+5
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/RobotComments.txt

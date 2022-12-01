@@ -1,0 +1,2 @@
+Scenes/FirstScene/Conv/BotConv/greetings.txt
+Scenes/FirstScene/Conv/BotConv/End.txt

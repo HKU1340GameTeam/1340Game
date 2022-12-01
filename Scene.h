@@ -28,6 +28,7 @@ public:
 	map<char, int> tpY;
 
 	vector<Animator> animList;
+	int animNum;
 	vector<NPC> NPCList;
 	int NPCNum;
 
@@ -39,6 +40,8 @@ public:
 	int NPCsDetect(Player player);
 	void WriteNPCsToLayer(Layer &layer,Layer &layerColor);
 	void ShowNPCsComment(Player player, Layer &layer);
+
+	void WriteAnimatorsToLayer(Layer &layer,Layer &layerColor);
 
 	void setName(string sn);
 	// map that contains char indicating which to trigger

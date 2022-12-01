@@ -160,6 +160,14 @@ void NPC::ReadBasicInfo(string NPCinfoPath){
 	getline(fin,line);
 	writeToLayer = stoi(line);
 
+	getline(fin,line);
+	if(line!="Above Head Comment:"){
+		cerr << "NPC format not correct (ABC)" << NPCinfoPath << endl;
+		exit(1);
+	}
+	getline(fin,line);
+	CommentsPath = line;
+
 	fin.close();
 }
 

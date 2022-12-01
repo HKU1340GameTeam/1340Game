@@ -52,17 +52,33 @@ void Scene::ShowNPCsComment(Player player, Layer &layer){
 }
 
 void Scene::ReadAnimators(string AnimatorPath){
-	//ifstream fin;
-	//fin.open(AnimatorPath);
-	//if(fin.fail()){
-		//cerr << "failure to open the anim file from Scene" << endl;
-		//exit(1);
-	//}
-	//string line;
-	//while(getline(fin,line)){
-		//AnimatorPath.push_back(NPC(line));
-	//}
-	//fin.close();
+	ifstream fin;
+	fin.open(AnimatorPath);
+	if(fin.fail()){
+		cerr << "failure to open the anim file from Scene" << endl;
+		exit(1);
+	}
+	string line;
+	Animator anim;
+	int x, y;
+	float updateInterval;
+	while(getline(fin,line)){
+		istringstream iss(line);
+		iss >> x >> y >> updateInterval;
+		anim = Animator(x,y,updateInterval);
+		getline(fin,line);
+		anim.ReadVideo(line);
+		animList.push_back(anim);
+	}
+	animNum=animList.size();
+	fin.close();
+}
+
+void Scene::WriteAnimatorsToLayer(Layer &layer,Layer &layerColor){
+	for(int i=0;i<animNum;i++){
+		animList[i].UpdateFrame();
+		layer.WriteObject(animList[i].currentFrame,animList[i].posX,animList[i].posY,animList[i].frameXSize,animList[i].frameYSize);
+	}
 }
 
 void Scene::setName(string sn) { sceneName = sn; }
@@ -115,6 +131,7 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 	NPCList.clear();
 
 	ReadNPCs(folderName+"NPCList.txt");
+	ReadAnimators(folderName+"AnimList.txt");
 
 	// Need to reset layer to empty
 	l0.ReadNewLayerFromFile(folderName+"emptyScene.txt");

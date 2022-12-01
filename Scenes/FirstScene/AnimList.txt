@@ -1,0 +1,6 @@
+3 3 0.05
+Animation/PartyParrot1/video.txt
+100 3 0.1
+Animation/PartyParrot1/video.txt
+1 73 0.05
+Animation/Portal2/video.txt

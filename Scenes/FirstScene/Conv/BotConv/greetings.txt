@@ -1,0 +1,9 @@
+Greetings
+listen
+TalkStarts
+Heeell-lo
+Thi-is i-is Bot
+TalkEnds
+NextTalk
+End
+NextTalkEnds

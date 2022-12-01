@@ -29,7 +29,7 @@ class NPC{
 		Conversation conv;
 
 		// Above head comment
-		string CommentsPath = "AboveHeadComment/MentorComments.txt";
+		string CommentsPath; 
 		AboveHeadComment abc = AboveHeadComment();
 
 		// figure of the npc

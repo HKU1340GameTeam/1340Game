@@ -59,37 +59,6 @@ int main(){
 	Conversation currentConv;
 	string currentNPCName;
 	int NPCDetectIndex = -2;
-	// cout << 's' << endl;
-	
-	//cout << mentor.name << endl;
-	//mentor.conv.PrintAllConv();
-
-	//for(int i=0;i<(int)mentor.figure.size();i++){
-		//cout << mentor.figure[i] << endl;
-	//}
-	//for(int i=0;i<(int)mentor.figureColor.size();i++){
-		//cout << mentor.figureColor[i] << endl;
-	//}
-	//cout << mentor.posX << endl;
-	//cout << mentor.posY << endl;
-	//cout << mentor.leftTriggerRange << endl;
-	//cout << mentor.rightTriggerRange << endl;
-	//cout << mentor.upTriggerRange << endl;
-	//cout << mentor.downTriggerRange << endl;
-	//cout << mentor.writeToLayer << endl;
-
-	//cout << mentor.NPCXSize << endl;
-	//cout << mentor.NPCYSize << endl;
-	
-	
-	//scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
-
-	//mentor.WriteNPCtoLayer(layer1,layer1_fg_color);
-
-	//scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
-
-	//layer.PrintLayer();
-
 
 	while (state != "Exit") {
 		while (state == "Normal") {
@@ -137,16 +106,15 @@ int main(){
 
 			scene.WriteNPCsToLayer(layer1,layer1_fg_color);
 			scene.ShowNPCsComment(player,layer1);
+			scene.WriteAnimatorsToLayer(layer1,layer1_fg_color);
 
 			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
 
 			gotoxy(1,1);
 			camera.colorPrintCam();
-			//camera.printCam();
-			//cout << scene.trigger[player.int_y_pos][player.int_x_pos] << endl;
-			//cout << "Mentor PosX" << mentor.posX << " Mentor PosY" << mentor.posY << endl;
-			//cout << "Player pos x" << player.int_x_pos << " Player pos Y" << player.int_y_pos << endl;
+
+			cout << scene.NPCList[1].name << endl;
 
 			// refresh with refresh rate of 1/deltatime
 			usleep(deltaTime);

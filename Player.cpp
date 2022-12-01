@@ -467,13 +467,6 @@ void Player::ReadInputMap(){
 
 	string line;
 	// leftMove
-	if(getline(fin,line)){
-
-	}
-	else{
-		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
-		exit(1);
-	}
 	if(getline(fin,line)){}
 	else{
 		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
@@ -495,12 +488,17 @@ void Player::ReadInputMap(){
 		exit(1);
 	}
 
-	// lmove
 	if(getline(fin,line)){
 		rightMove = line[0];
 	}
 	else{
 		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+	}
+	// lmove
+	if(getline(fin,line)){}
+	else{
+		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
+		exit(1);
 	}
 	if(getline(fin,line)){
 		lmove= line[0];
