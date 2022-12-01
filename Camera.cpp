@@ -152,7 +152,7 @@ void Camera::CenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player){
 				}
 			}
 			else{
-				cam[i][j] = '*';
+				cam[i][j] = ' ';
 				fgColorCam[i][j] = ' ';
 			}
 		}

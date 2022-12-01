@@ -51,6 +51,29 @@ int main(){
 	scene.setName(sceneName);
 	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 
+	//cout << scene.animList[0].frameYSize << endl;
+	//for(int i=0;i<scene.animList[0].frameYSize;i++){
+		//cout << scene.animList[0].currentFrameColor[i] << endl;
+	//}
+	
+	//for(int i=0;i<scene.animList[0].videoSize;i++){
+		//for(int y=0;y<scene.animList[0].frameYSize;y++){
+			 //for(int x=0;x<scene.animList[0].frameXSize;x++){
+				//cout << scene.animList[0].videoColor[i][y][x]; 
+				////if(videoColor[i][y][x]!=' '){
+					////videoColor[i][y][x] = color;
+				////}
+			//}
+			//cout << endl;
+		//}
+	//}
+	//for(int i=0;i<scene.animNum;i++){
+		//scene.animList[i].UpdateFrame();
+	//}
+	//for(int i=0;i<scene.animList[0].frameYSize;i++){
+		//cout << scene.animList[0].currentFrameColor[i] << endl;
+	//}
+
 	int convIndex = 0;
 	ConvBox cb;
 	cb.ReadConvBox();
@@ -128,6 +151,9 @@ int main(){
 		}
 
 		system("clear");
+		if(state == "Conv"){
+			camera.CenterFollowPlayer(layer,layer_fg_color, player);
+		}
 		while (state == "Conv") {
 			if(keyb.kbhit()){
 				key_nr = keyb.getch();
@@ -146,7 +172,7 @@ int main(){
 					}
 				}
 			}
-			camera.CenterFollowPlayer(layer,layer_fg_color, player);
+			//camera.CenterFollowPlayer(layer,layer_fg_color, player);
 			cb.ResetConvBox();
 			cb.WriteNameToBox(currentNPCName);
 			cb.WriteConvToBox(currentConv);

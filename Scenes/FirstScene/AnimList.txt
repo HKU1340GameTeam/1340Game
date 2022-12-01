@@ -1,6 +1,8 @@
-3 3 0.05
+3 3 0.05 r
 Animation/PartyParrot1/video.txt
-100 3 0.1
+100 3 0.1 y
 Animation/PartyParrot1/video.txt
-1 73 0.05
+1 65 0.05 c
 Animation/Portal2/video.txt
+50 65 0.05 r
+Animation/fire1/video.txt

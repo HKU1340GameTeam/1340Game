@@ -62,12 +62,14 @@ void Scene::ReadAnimators(string AnimatorPath){
 	Animator anim;
 	int x, y;
 	float updateInterval;
+	char color;
 	while(getline(fin,line)){
 		istringstream iss(line);
-		iss >> x >> y >> updateInterval;
-		anim = Animator(x,y,updateInterval);
+		iss >> x >> y >> updateInterval >> color;
+		anim = Animator(x,y,updateInterval,color);
 		getline(fin,line);
 		anim.ReadVideo(line);
+		anim.ConvertColor();
 		animList.push_back(anim);
 	}
 	animNum=animList.size();
@@ -78,6 +80,7 @@ void Scene::WriteAnimatorsToLayer(Layer &layer,Layer &layerColor){
 	for(int i=0;i<animNum;i++){
 		animList[i].UpdateFrame();
 		layer.WriteObject(animList[i].currentFrame,animList[i].posX,animList[i].posY,animList[i].frameXSize,animList[i].frameYSize);
+		layerColor.WriteObject(animList[i].currentFrameColor,animList[i].posX,animList[i].posY,animList[i].frameXSize,animList[i].frameYSize);
 	}
 }
 

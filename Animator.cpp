@@ -9,10 +9,11 @@
 using namespace std;
 
 
-Animator::Animator(int PosX, int PosY, float updateInterval){
+Animator::Animator(int PosX, int PosY, float updateInterval, char Color){
 	posX = PosX;
 	posY = PosY;
 	updateTime = updateInterval;
+	color = Color;
 }
 
 Animator::Animator(){
@@ -42,11 +43,14 @@ void Animator::ReadVideo(string FullPathName){
 		}
 		if(line != separation){
 			currentFrame.push_back(line);
+			currentFrameColor.push_back(line);
 			YsizeCount++;
 		}
 		else{
 			video.push_back(currentFrame);
+			videoColor.push_back(currentFrameColor);
 			currentFrame.clear();
+			currentFrameColor.clear();
 			if(frameYSize != -1){
 				if(frameYSize != YsizeCount){
 					cerr << FullPathName << "frame Y size not consistent" << endl;
@@ -61,22 +65,26 @@ void Animator::ReadVideo(string FullPathName){
 	}
 	videoSize = video.size();
 	frameXSize-=1;
-	currentFrame.clear();
+	//currentFrame.clear();
+	//currentFrameColor.clear();
 	LoadFrame();
 	fin.close();
 }
 
 void Animator::LoadFrame(){
 	currentFrame.clear();
+	currentFrameColor.clear();
 	for(int i=0;i<frameYSize;i++){
 		currentFrame.push_back(video[frameIndex][i]);
+		currentFrameColor.push_back(videoColor[frameIndex][i]);
 	}
 }
 void Animator::UpdateFrame(){
 	accumulatedTime += deltaSecond;
 	if(accumulatedTime >= updateTime){
 		accumulatedTime = 0;
-		currentFrame.clear();
+		//currentFrame.clear();
+		//currentFrameColor.clear();
 		frameIndex ++;
 		if(frameIndex >= (videoSize)){
 			frameIndex = 0;
@@ -84,6 +92,18 @@ void Animator::UpdateFrame(){
 		LoadFrame();
 	}
 	
+}
+
+void Animator::ConvertColor(){
+	for(int i=0;i<videoSize;i++){
+		for(int y=0;y<frameYSize;y++){
+			for(int x=0;x<frameXSize;x++){
+				if(videoColor[i][y][x]!=' '){
+					videoColor[i][y][x] = color;
+				}
+			}
+		}
+	}
 }
 //void Animator::WriteFrame(Layer &layer){
 	//layer.WriteObject(currentFrame,posX,posY,frameXSize,frameYSize);
