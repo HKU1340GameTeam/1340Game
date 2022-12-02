@@ -1,7 +1,7 @@
 Name:
 Explorer with giant Ears
 Conversation Path:
-GameScenes/BirthScene/Conv/Explorer/convList.txt
+GameScenes/CScene/Conv/Explorer/convList.txt
 Figure:
           __     __  
          /  \~~~/  \ 
@@ -33,4 +33,4 @@ downTriggerRange:
 Write to layer:
 1
 Above Head Comment:
-GameScenes/BirthScene/Comments/ExplorerComments.txt
+GameScenes/CScene/Comments/ExplorerComments.txt

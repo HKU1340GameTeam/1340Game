@@ -1,0 +1,36 @@
+Name:
+Explorer with giant Ears
+Conversation Path:
+Conversation/Explorer/convList.txt
+Figure:
+          __     __  
+         /  \~~~/  \ 
+   ,----(     ..    )
+  /      \__     __/ 
+ /|         (\  |(   
+^ \   /___\  /\ |    
+   |__|   |__|-"     
+Figure Color:
+          __     __  
+         /  \~~~/  \ 
+   ,----(     ..    )
+  /      \__     __/ 
+ /|         (\  |(   
+^ \   /___\  /\ |    
+   |__|   |__|-"     
+Position X:
+423
+Position Y:
+28
+leftTriggerRange:
+10
+rightTriggerRange:
+19
+upTriggerRange:
+5
+downTriggerRange:
+7
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/ExplorerComments.txt

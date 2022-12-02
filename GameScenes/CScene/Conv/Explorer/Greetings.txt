@@ -1,0 +1,10 @@
+Greeting
+listen
+TalkStarts
+Hello
+You must be an explorer
+Just like me
+TalkEnds
+NextTalk
+End
+NextTalkEnds

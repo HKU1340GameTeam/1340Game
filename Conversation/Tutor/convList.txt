@@ -1,6 +1,6 @@
-Conversation/Tutor/Greetings.txt
-Conversation/Tutor/Tutorial.txt
-Conversation/Tutor/HowToMove.txt
-Conversation/Tutor/HowToJump.txt
-Conversation/Tutor/HowToInteract.txt
-Conversation/Tutor/End.txt
+GameScenes/BirthScene/Conv/Tutor/Greetings.txt
+GameScenes/BirthScene/Conv/Tutor/Tutorial.txt
+GameScenes/BirthScene/Conv/Tutor/HowToMove.txt
+GameScenes/BirthScene/Conv/Tutor/HowToJump.txt
+GameScenes/BirthScene/Conv/Tutor/HowToInteract.txt
+GameScenes/BirthScene/Conv/Tutor/End.txt
