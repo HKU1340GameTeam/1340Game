@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <cmath>
 using namespace std;
 
 //Camera::Camera(){
@@ -309,5 +310,136 @@ void Camera::EdgeBlockFollowDeathPlayer(Layer layer, Layer fgColorLayer, Player 
 		}
 	}
 
+}
+
+
+void Camera::EdgeCenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player){
+	int pixelX;
+	int pixelY;
+
+	// x_pos = player.int_x_pos - center_x_offset;
+	// y_pos = player.int_y_pos - center_y_offset;
+
+	// move
+	if (toCenter && center_y_offset > target) {
+		int thisDeviation = round(accDeviation+mvSpd) - round(accDeviation);
+		accDeviation += mvSpd;
+		// center_y_offset += (center_y_offset+thisDeviation >= target)? thisDeviation: target-center_y_offset;
+		if (center_y_offset+thisDeviation >= target) {
+			center_y_offset += thisDeviation;
+		}
+		else {
+			center_y_offset = target;
+		}
+	}
+	else if (!toCenter && center_y_offset < target) {
+		int thisDeviation = round(accDeviation+mvSpd) - round(accDeviation);
+		accDeviation += mvSpd;
+		// center_y_offset += (center_y_offset+thisDeviation <= target)? thisDeviation: target-center_y_offset;
+		if (center_y_offset+thisDeviation <= target) {
+			center_y_offset += thisDeviation;
+		}
+		else {
+			center_y_offset = target;
+		}
+	}
+
+	if (center_y_offset == target) {
+		if (maxDeviation < 0 && accDeviation < maxDeviation) {
+			accDeviation = maxDeviation;
+		}
+		else if (maxDeviation > 0 && accDeviation > maxDeviation) {
+			accDeviation = maxDeviation;
+		}
+		else if (maxDeviation == 0) {
+			accDeviation = 0;
+		}
+	}
+
+	x_pos = player.int_x_pos - center_x_offset;
+	y_pos = player.int_y_pos - center_y_offset;
+
+	if (x_pos < 0) {
+		x_pos = 0;
+	}
+	else if (x_pos > layer.LayerXSize-CamXSize) {
+		x_pos = layer.LayerXSize-CamXSize;
+	}
+
+	if (y_pos < 0) {
+		y_pos = 0;
+	}
+	else if (y_pos > layer.LayerYSize-CamYSize) {
+		y_pos = layer.LayerYSize-CamYSize-round(accDeviation);
+	}
+	// else if (y_pos > layer.LayerYSize+abs(maxDeviation)-CamYSize) { y_pos = layer.LayerYSize+abs(maxDeviation)-CamYSize; }
+	// else if (y_pos > layer.LayerYSize-CamYSize+(28-target) ) { y_pos = layer.LayerYSize-CamYSize + round(accDeviation); }
+
+	for (int i = 1; i < CamYSize-1; i++) {
+		for (int j = 1; j < CamXSize-1; j++) {
+			pixelX = x_pos + j;
+			pixelY = y_pos + i;
+
+			if (!layer.OutOfLayer(pixelX, pixelY)) {
+				try {
+					cam[i][j] = layer.layer[pixelY][pixelX];
+					fgColorCam[i][j] = fgColorLayer.layer[pixelY][pixelX];
+				}
+				catch (int num) {
+					cout << '(' << pixelY << ", " << pixelX << ')' << endl;
+					perror("im confused");
+				}
+			}
+
+			else {
+				cam[i][j] = '%';
+				fgColorCam[i][j] = 'w';
+			}
+		}
+	}
+}
+
+
+void Camera::moveToCenter(bool cen, float spd, int tgt) {
+	toCenter = cen;
+	int trt = tgt;
+
+	if (trt >= 40 || trt <= 3) {
+		// trt = (cen)? 20: 28;
+		if (cen) {
+			trt = 20;
+		}
+		else {
+			trt = 28;
+		}
+	}
+
+	if (spd == 0) {
+		spd = 1.0;
+	}
+
+	if (target != trt) {
+		target = trt;
+		maxDeviation = target - center_y_offset + accDeviation; // int? !!! //accDeviation;
+	}
+
+	if (center_y_offset > target) {
+		// mvSpd = (spd<0)? spd: -spd;
+		if (spd < 0) {
+			mvSpd = spd;
+		}
+		else {
+			mvSpd = -spd;
+		}
+	}
+	else if (center_y_offset < target) {
+		// mvSpd = (spd>0)? spd: -spd;
+		if (spd > 0) {
+			mvSpd = spd;
+		}
+		else {
+			mvSpd = -spd;
+		}
+	}
 }
 
