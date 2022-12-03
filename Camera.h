@@ -9,6 +9,7 @@
 #include "Color.h"
 #include <vector>
 #include <string>
+#include <fstream>
 class Camera{
 	public:
 		Camera();
@@ -33,6 +34,17 @@ class Camera{
 		// Cam that records foreground color
 		vector<string> fgColorCam;
 
+
+		string deadCamListName = "Camera/deadCamList.txt";
+		// died cam appearence list
+		vector<string> deadCamList;
+
+		// died cam
+		vector<string> deadCam;
+
+		// died cams
+		vector<vector<string>> deadCams;
+
 		// display cam without color
 		void printCam();
 		// display cam with color
@@ -43,9 +55,22 @@ class Camera{
 		void CenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
 		// move to follow player but will not be out of edge
 		void EdgeBlockFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
+		// move to follow player but will not be out of edge
+		void EdgeBlockFollowDeathPlayer(Layer layer, Layer fgColorLayer, Player player);
 		// Check if the point is out of camera
 		bool OutOfCamera(int x,int y);
+		// Read Died Cam Info
+		void ReadDeadCamList();
+		// Read Died Cam
+		void ReadDeadCam(string Path);
+		void ReadDeadCams();
 
+		// Write Death Cam
+		void WriteDeadCam(int i);
+		void WriteOneRandomDeadCam();
+		// Write Objects
+		void WriteObject(vector<string> pic, int pos_x, int pos_y, int size_x, int size_y);
+		void WriteObject(string message, int pos_x, int pos_y);
 };
 
 #endif

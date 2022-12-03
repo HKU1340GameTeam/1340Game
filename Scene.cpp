@@ -201,23 +201,57 @@ void Scene::loadNewScene(Layer &l0, Layer &l1, Layer &l2, Layer &fgColor, Layer 
 }
 
 
-bool Scene::switchScene(Player &p, char Input) {
+bool Scene::teleportSwitchScene(Player &p, char Input) {
 	// char loc = trigger[p.position.y][p.position.x];
 	//if((int)trigger.size()==0){
 		//return false;
 	//}
-	char loc = trigger[p.int_y_pos][p.int_x_pos];
-	if (loc == ' ' || loc == '*' || Input != p.teleport) { return false; }
-	else {
-		if (tp.count(loc) > 0) {
-			setName(tp[loc]);
-			// Need?
-			p.position.x = tpX[loc];
-			p.position.y = tpY[loc];
-			// Mistake: to change any property of a para, need &
-			p.int_x_pos = tpX[loc];
-			p.int_y_pos = tpY[loc];
-			return true;
+	if(Input!=p.teleport){
+		return false;
+	}
+	for(int y=p.int_y_pos+p.ceilMarginOffset;y<=p.int_y_pos+p.floorMarginOffset;y++){
+		for(int x=p.int_x_pos+p.leftMarginOffset;x<=p.int_x_pos+p.rightMarginOffset;x++){
+			char loc = trigger[p.int_y_pos][p.int_x_pos];
+			if(loc <= 57 && loc >= 48) {
+				if (tp.count(loc) > 0) {
+					setName(tp[loc]);
+					// Need?
+					p.position.x = tpX[loc];
+					p.position.y = tpY[loc];
+					// Mistake: to change any property of a para, need &
+					p.int_x_pos = tpX[loc];
+					p.int_y_pos = tpY[loc];
+					return true;
+				}
+			}
+
+		}
+	}
+	return false;
+}
+
+bool Scene::diedSwitchScene(Player &p) {
+	// char loc = trigger[p.position.y][p.position.x];
+	//if((int)trigger.size()==0){
+		//return false;
+	//}
+	for(int y=p.int_y_pos+p.ceilMarginOffset;y<=p.int_y_pos+p.floorMarginOffset;y++){
+		for(int x=p.int_x_pos+p.leftMarginOffset;x<=p.int_x_pos+p.rightMarginOffset;x++){
+			char loc = trigger[y][x];
+			if(loc >= 97 && loc <= 122){
+				if (tp.count(loc) > 0) {
+					setName(tp[loc]);
+					p.deathXPos = p.int_x_pos;
+					p.deathYPos = p.int_y_pos;
+					// Need
+					p.position.x = tpX[loc];
+					p.position.y = tpY[loc];
+					// Mistake: to change any property of a para, need &
+					p.int_x_pos = tpX[loc];
+					p.int_y_pos = tpY[loc];
+					return true;
+				}
+			}
 		}
 	}
 	return false;
@@ -228,18 +262,22 @@ bool Scene::forceSwitchScene(Player &p) {
 	//if((int)trigger.size()==0){
 		//return false;
 	//}
-	char loc = trigger[p.int_y_pos][p.int_x_pos];
-	if (loc == ' ' || loc == '*' || (loc <= 57 && loc >= 48)) { return false; }
-	else {
-		if (tp.count(loc) > 0) {
-			setName(tp[loc]);
-			// Need?
-			p.position.x = tpX[loc];
-			p.position.y = tpY[loc];
-			// Mistake: to change any property of a para, need &
-			p.int_x_pos = tpX[loc];
-			p.int_y_pos = tpY[loc];
-			return true;
+	for(int y=p.int_y_pos+p.ceilMarginOffset;y<=p.int_y_pos+p.floorMarginOffset;y++){
+		for(int x=p.int_x_pos+p.leftMarginOffset;x<=p.int_x_pos+p.rightMarginOffset;x++){
+			char loc = trigger[y][x];
+			if(loc <= 90 && loc >= 65) {
+				if (tp.count(loc) > 0) {
+					setName(tp[loc]);
+					// Need?
+					p.position.x = tpX[loc];
+					p.position.y = tpY[loc];
+					// Mistake: to change any property of a para, need &
+					p.int_x_pos = tpX[loc];
+					p.int_y_pos = tpY[loc];
+					return true;
+				}
+			}
+			
 		}
 	}
 	return false;

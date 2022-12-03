@@ -25,15 +25,12 @@ char Input;
 keyboard keyb;
 
 int PlayerXPosition = 5;
-int PlayerYPosition = 5;
+int PlayerYPosition = 54;
+
+int playerStatus = -1;
 int main(){
 
 	string state = "Normal";
-
-	//cout << "Enter SceneName: " << endl;
-	//cin >> SceneName;
-
-	//system("clear");
 
 	Layer layer;
 	Layer layer1;
@@ -45,37 +42,15 @@ int main(){
 
 	// initialize camera
 	Camera camera = Camera();
+	camera.ReadDeadCams();
 
 	// initialize player
 	Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
-	string sceneName = "BirthScene";
+	string sceneName = "ThornScene";
 	scene.setName(sceneName);
 	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
-
-	//cout << scene.animList[0].frameYSize << endl;
-	//for(int i=0;i<scene.animList[0].frameYSize;i++){
-		//cout << scene.animList[0].currentFrameColor[i] << endl;
-	//}
-	
-	//for(int i=0;i<scene.animList[0].videoSize;i++){
-		//for(int y=0;y<scene.animList[0].frameYSize;y++){
-			 //for(int x=0;x<scene.animList[0].frameXSize;x++){
-				//cout << scene.animList[0].videoColor[i][y][x]; 
-				////if(videoColor[i][y][x]!=' '){
-					////videoColor[i][y][x] = color;
-				////}
-			//}
-			//cout << endl;
-		//}
-	//}
-	//for(int i=0;i<scene.animNum;i++){
-		//scene.animList[i].UpdateFrame();
-	//}
-	//for(int i=0;i<scene.animList[0].frameYSize;i++){
-		//cout << scene.animList[0].currentFrameColor[i] << endl;
-	//}
 
 	int convIndex = 0;
 	ConvBox cb;
@@ -88,12 +63,62 @@ int main(){
 
 	while (state != "Exit") {
 		while (state == "Normal") {
+			layer1_fg_color.WriteObject(player.deathFigure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
+			layer1.WriteObject(player.deathFigure, player.int_x_pos, player.int_y_pos, 3, 3);
+			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
+			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
+
 			NPCDetectIndex = scene.NPCsDetect(player);
-			if (scene.switchScene(player,Input)) {
+			if (scene.teleportSwitchScene(player,Input)) {
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 			}
 			else if (scene.forceSwitchScene(player)) {
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+			}
+			else if (scene.diedSwitchScene(player)) {
+				player.HP --;
+				gotoxy(1,1);
+				player.ResetPlayer();
+				camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+				camera.colorPrintCam();
+				for(int i=0;i<50;i++){
+					if(keyb.kbhit()){
+						key_nr = keyb.getch();
+					}
+				}
+				sleep(diedWaitTime);
+				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+				for(int i=0;i<50;i++){
+					if(keyb.kbhit()){
+						key_nr = keyb.getch();
+					}
+				}
+				Input = 'p';
+			}
+			if(player.HP <= 0){
+				scene.setName(player.RebirthScene);
+				player.position.x = player.rebirthPosX;
+				player.position.y = player.rebirthPosY;
+				player.int_x_pos = player.rebirthPosX;
+				player.int_y_pos = player.rebirthPosY;
+				player.HP = player.maxHP;
+				gotoxy(1,1);
+				player.ResetPlayer();
+				camera.WriteDeadCam(0);
+				camera.colorPrintCam();
+				for(int i=0;i<50;i++){
+					if(keyb.kbhit()){
+						key_nr = keyb.getch();
+					}
+				}
+				sleep(deathWaitTime);
+				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+				for(int i=0;i<50;i++){
+					if(keyb.kbhit()){
+						key_nr = keyb.getch();
+					}
+				}
+				Input = 'p';
 			}
 
 			// detect if keyboard is hit
@@ -134,15 +159,26 @@ int main(){
 
 			layer1.WriteObject(player.figure, player.int_x_pos, player.int_y_pos, 3, 3);
 			layer1_fg_color.WriteObject(player.figure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
-			player.PrintAboveHeadComment(scene.trigger,layer2);
-
+			playerStatus = player.PrintAboveHeadComment(scene.trigger,layer2, -1);
+			if(playerStatus == 1 && Input == 'r'){
+				playerStatus = player.PrintAboveHeadComment(scene.trigger,layer2, 2);
+				player.SetRebirth(scene.sceneName);
+			}
 			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
+			camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+
+
 
 			gotoxy(1,1);
 			camera.colorPrintCam();
+			cout << player.deathXPos << " " << player.deathYPos << endl;
+			cout << player.int_x_pos << " " << player.int_y_pos << endl;
 
 			// refresh with refresh rate of 1/deltatime
+			if(playerStatus == 2){
+				sleep(2);
+			}
 			usleep(deltaTime);
 	
 		}

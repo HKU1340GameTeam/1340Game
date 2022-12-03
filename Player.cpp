@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <string>
 using namespace std;
 
 
@@ -456,13 +457,32 @@ void Player::UpdateFigure(){
 }
 
 
-void Player::PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer){
-	if(trigger[int_y_pos][int_x_pos]!=' ' && trigger[int_y_pos][int_x_pos]!='*' && !(trigger[int_y_pos][int_x_pos] > 57 || trigger[int_y_pos][int_x_pos] < 48)){
-		abc.currentCommentIndex = 0;
+int Player::PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer, int i){
+	if(i == -1){
+		if(trigger[int_y_pos][int_x_pos]!=' ' && trigger[int_y_pos][int_x_pos]!='*' && !(trigger[int_y_pos][int_x_pos] > 57 || trigger[int_y_pos][int_x_pos] < 48)){
+			abc.currentCommentIndex = 0;
+			abc.objectPositionX = int_x_pos;
+			abc.objectPositionY = int_y_pos;
+			abc.PrintComment(scene2Layer);
+			return 0;
+		}
+		if(trigger[int_y_pos][int_x_pos]=='#'){
+			abc.currentCommentIndex = 1;
+			abc.objectPositionX = int_x_pos;
+			abc.objectPositionY = int_y_pos;
+			abc.PrintComment(scene2Layer);
+			return 1;
+		}
+	}
+	else{
+		abc.currentCommentIndex = i;
 		abc.objectPositionX = int_x_pos;
 		abc.objectPositionY = int_y_pos;
 		abc.PrintComment(scene2Layer);
+		return i;
+
 	}
+	return -1;
 }
 
 void Player::ReadInputMap(){
@@ -593,6 +613,31 @@ void Player::ReadInputMap(){
 		cerr << "ReadInputMap wrong format" << InputMapPath << endl;
 	}
 	fin.close();
+}
+
+void Player::ResetPlayer(){
+	dashIndicator = -1;
+	dashing = false;
+	velocity.x = 0;
+	velocity.y = 0;
+	standingOnGround = false;
+	jumpActivated = false;
+	justLanded = false;
+	prvInput='p';
+	hiddenMove='p';
+}
+
+
+string Player::GetHealthMessage(){
+	return HPhead + to_string(HP);
+}
+
+
+void Player::SetRebirth(string Name){
+	RebirthScene = Name;
+	rebirthPosX = int_x_pos;
+	rebirthPosY = int_y_pos;
+
 }
 
 

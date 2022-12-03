@@ -1,2 +1,6 @@
 Press_t_to_teleport
 9 1
+Press_r_to_set_rebirth
+10 1
+___Rebirth_Point_Set!___
+11 1

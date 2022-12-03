@@ -6,6 +6,7 @@
 #include "common.h"
 #include <vector>
 #include <fstream>
+#include <string>
 #include "Layer.h"
 #include "AboveHeadComment.h"
 using namespace std;
@@ -27,9 +28,13 @@ class Player{
 		// horizontal speed of the player after jump
 		float autoMoveSpeed;
 
-		// int_?_pos is the integer position of the player
+		// int_*_pos is the integer position of the player
 		int int_x_pos;
 		int int_y_pos;
+
+		// death position
+		int deathXPos = 0;
+		int deathYPos =  0;
 
 		// facing 1 for right, -1 for left
 		int facing = 0;
@@ -49,9 +54,22 @@ class Player{
 		float dashLastTime = 0.20;
 		float dashingTime = 0.0;
 		float dashSpeed = 75.0;
-		int dashIndicator;// 1 for dashing, 0 for end of dash, -1 for not dashing
+		int dashIndicator = -1;// 1 for dashing, 0 for end of dash, -1 for not dashing
 		int dashNum = 1;
 		int dashNumAvailable = dashNum;
+
+		// Player HP
+		string HPhead = "Player Health: ";
+		int maxHP = 10;
+		int HP = 10;
+		int HPXPos = 5;
+		int HPYPos = 2;
+
+		// RebirtScene + RebirthPosition
+		string RebirthScene = "BirthScene";
+		int rebirthPosX = 5;
+		int rebirthPosY = 5;
+
 
 		// figure is the player's appearance
 		vector<string> figure={{" 0 "},
@@ -110,6 +128,12 @@ class Player{
 												{" yy"},
 												{"y y"}};
 
+		vector<string> deathFigure={{".0."},
+						            {"/|\\"},
+						            {"/.\\"}};
+		vector<string> deathFigure_fg_color={{"nnn"},
+											 {"nnn"},
+											 {"nnn"}};
 		// figure background color (which is not implemented yet)
 		//vector<vector<char>> figure_bg_color={{' ','n',' '},
 									 //{'n','n','n'},
@@ -173,7 +197,16 @@ class Player{
 		void UpdateFigure();
 
 		// Above Head Comment Control
-		void PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer);
+		int PrintAboveHeadComment(vector<string> trigger, Layer &scene2Layer, int i);
+
+		// Resetting Player status
+		void ResetPlayer();
+
+		// HP
+		string GetHealthMessage();
+
+		// ResetRebirth
+		void SetRebirth(string SceneName);
 };
 
 #endif

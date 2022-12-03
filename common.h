@@ -20,6 +20,9 @@ const float deltaSecond = deltaTime/1000000;
 // the thing that's 9.81 in real life
 const float g = 90.0;
 
+// died interval time (in seconds)
+const float diedWaitTime = 2.5;
+const float deathWaitTime = 7.5;
 
 
 // used to control where cursor goes
