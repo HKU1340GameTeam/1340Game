@@ -8,6 +8,7 @@
 #include <cmath>
 #include <fstream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 
@@ -641,4 +642,33 @@ void Player::SetRebirth(string Name){
 }
 
 
+void Player::Load(){
+
+	ifstream fin;
+	fin.open(saveFileName);
+	if(fin.fail()){
+		cerr << "fail to open" << saveFileName << endl; 
+		exit(1);
+	}
+	
+	string line;
+	getline(fin,line);
+	string name;
+	int x;
+	int y;
+	istringstream iss(line);
+
+	iss >> name >> x >> y;
+	rebirthPosX = x;
+	rebirthPosY = y;
+	RebirthScene = name;
+
+	position.x = rebirthPosX;
+	int_x_pos = rebirthPosX;
+	position.y = rebirthPosY;
+	int_y_pos = rebirthPosY;
+
+	fin.close();
+
+}
 

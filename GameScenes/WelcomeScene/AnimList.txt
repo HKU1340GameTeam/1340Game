@@ -1,0 +1,6 @@
+1 34 0.05 n
+Animation/rickroll1/video.txt
+160 30 0.05 n
+Animation/PartyParrot1/video.txt
+120 62 0.05 c
+Animation/Portal2/video.txt

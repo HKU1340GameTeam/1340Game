@@ -4,7 +4,6 @@
 #ifndef _common_h
 #define _common_h
 
-
 struct vec{
 	float x;
 	float y;

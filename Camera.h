@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <cmath>
 class Camera{
 	public:
 		Camera();
@@ -72,6 +73,16 @@ class Camera{
 		// Write Objects
 		void WriteObject(vector<string> pic, int pos_x, int pos_y, int size_x, int size_y);
 		void WriteObject(string message, int pos_x, int pos_y);
+
+		// LKH
+		// move to follow player placed at center but will not be out of edge except if player's near ground
+		void EdgeCenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
+
+		// move to center
+		int target = 20;
+		float accDeviation = 0.0, mvSpd = 0.0, maxDeviation = 0.0;
+		bool toCenter = true;
+		void moveToCenter(bool cen, float Spd, int target);
 };
 
 #endif

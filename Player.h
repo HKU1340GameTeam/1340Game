@@ -172,6 +172,9 @@ class Player{
 		const float TimeToRefreshAutoMoveInSecond = 0.3;
 		char AutoMoveLabel;
 
+		// Save File Name
+		string saveFileName = "Player/Save.txt";
+
 		// DashControl
 		int DashTimeEnd();
 
@@ -207,6 +210,8 @@ class Player{
 
 		// ResetRebirth
 		void SetRebirth(string SceneName);
+
+		void Load();
 };
 
 #endif

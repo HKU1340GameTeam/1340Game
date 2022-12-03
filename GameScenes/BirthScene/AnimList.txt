@@ -1,4 +1,2 @@
 282 15 0.05 r
 Animation/fire1/video.txt
-1 48 0.05 n
-Animation/PartyParrot3/video.txt
