@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstdlib>
 using namespace std;
 
 //Camera::Camera(){
@@ -237,6 +238,13 @@ void Camera::WriteDeadCam(int i){
 			}
 		}
 	}
+}
+
+void Camera::WriteOneRandomDeadCam(){
+	int numOfDeadCam = deadCams.size();
+	int randNum = rand();
+	randNum = randNum % numOfDeadCam;
+	WriteDeadCam(randNum);
 }
 
 

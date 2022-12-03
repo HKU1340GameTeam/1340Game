@@ -25,7 +25,7 @@ char Input;
 keyboard keyb;
 
 int PlayerXPosition = 5;
-int PlayerYPosition = 54;
+int PlayerYPosition = 5;
 
 int playerStatus = -1;
 int main(){
@@ -48,7 +48,7 @@ int main(){
 	Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
-	string sceneName = "ThornScene";
+	string sceneName = "CScene";
 	scene.setName(sceneName);
 	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 
@@ -104,7 +104,7 @@ int main(){
 				player.HP = player.maxHP;
 				gotoxy(1,1);
 				player.ResetPlayer();
-				camera.WriteDeadCam(0);
+				camera.WriteOneRandomDeadCam();
 				camera.colorPrintCam();
 				for(int i=0;i<50;i++){
 					if(keyb.kbhit()){
@@ -172,8 +172,6 @@ int main(){
 
 			gotoxy(1,1);
 			camera.colorPrintCam();
-			cout << player.deathXPos << " " << player.deathYPos << endl;
-			cout << player.int_x_pos << " " << player.int_y_pos << endl;
 
 			// refresh with refresh rate of 1/deltatime
 			if(playerStatus == 2){
