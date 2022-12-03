@@ -25,7 +25,7 @@ char Input;
 keyboard keyb;
 
 int PlayerXPosition = 5;
-int PlayerYPosition = 5;
+int PlayerYPosition = 54;
 
 int playerStatus = -1;
 int main(){
@@ -48,7 +48,7 @@ int main(){
 	Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 
 	Scene scene;
-	string sceneName = "CScene";
+	string sceneName = "ThornScene";
 	scene.setName(sceneName);
 	scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
 

@@ -60,8 +60,8 @@ class Player{
 
 		// Player HP
 		string HPhead = "Player Health: ";
-		int maxHP = 2;
-		int HP = 2;
+		int maxHP = 50;
+		int HP = 50;
 		int HPXPos = 5;
 		int HPYPos = 2;
 

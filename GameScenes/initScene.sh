@@ -11,6 +11,3 @@
 touch triggerMap.txt
 touch AnimList.txt
 touch NPCList.txt
-mkdir NPC
-mkdir Conv
-mkdir Comments
