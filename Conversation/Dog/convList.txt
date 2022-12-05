@@ -1,0 +1,2 @@
+Conversation/Dog/Wisdom.txt
+Conversation/Dog/End.txt

@@ -1,0 +1,11 @@
+Cheers
+listen
+TalkStarts
+It is almost here
+Cross the dot line
+And you will get back
+Cheers
+TalkEnds
+NextTalk
+End
+NextTalkEnds

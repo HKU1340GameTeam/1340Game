@@ -1,0 +1,11 @@
+Answer
+listen
+TalkStarts
+Only fool trust the sign
+Go right
+Cross the border
+Go on
+TalkEnds
+NextTalk
+End
+NextTalkEnds
