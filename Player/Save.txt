@@ -1,4 +1,4 @@
+WelcomeScene 132 27 10
 NewScene 5 5 10
 ThornScene 200 30 1
 CScene 5 5 10
-WelcomeScene 132 27 10
