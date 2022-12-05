@@ -1,0 +1,32 @@
+Name:
+Marco
+Conversation Path:
+Conversation/Tutor1/convList.txt
+Figure:
+  0  
+ OMO 
+$ B &
+ / \ 
+|   |
+Figure Color:
+  n  
+ ryr 
+r y r
+ b b 
+b   b
+Position X:
+109
+Position Y:
+74
+leftTriggerRange:
+10
+rightTriggerRange:
+15
+upTriggerRange:
+5
+downTriggerRange:
+5
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/MentorComments.txt

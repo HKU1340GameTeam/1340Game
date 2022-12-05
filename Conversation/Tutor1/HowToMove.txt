@@ -1,0 +1,11 @@
+HowToMove
+listen
+TalkStarts
+L [l] and ['] are for moving left and right
+[o] and left square bracket ([) are for moving constantly left and right
+Space [ ] is for DASH
+To RUN CONSTANTLY, press constant left/right move, and then dash
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

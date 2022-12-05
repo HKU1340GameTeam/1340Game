@@ -72,9 +72,13 @@ void ConvBox::ReadConvBoxColor(){
 
 void ConvBox::WriteConvToBox(Conversation conv){
 	if(conv.currentTalk.category=='l'){
+		int length;
+		int Xpos;
+		length = conv.currentContent.length();
+		Xpos = ConvBoxXSize/2 - length/2;
 		for(int i=0;i<(int)conv.currentContent.length();i++){
-			if(i+initialWritePosX < ConvBoxXSize){
-				convBox[initialWritePosY][i+initialWritePosX] = conv.currentContent[i];
+			if(i+Xpos < ConvBoxXSize){
+				convBox[initialWritePosY][i+Xpos] = conv.currentContent[i];
 			}
 		}
 	}

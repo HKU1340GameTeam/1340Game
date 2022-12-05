@@ -1,0 +1,10 @@
+HowToInteract
+listen
+TalkStarts
+Press [r] to Interact(saving rebirth point & conversation)
+Press [t] to Teleport
+Press zero [0] to stop game
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

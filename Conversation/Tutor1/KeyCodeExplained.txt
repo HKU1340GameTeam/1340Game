@@ -1,0 +1,13 @@
+KeyCodeExplained
+listen
+TalkStarts
+You may see some key codes during the game
+These are hints to you on how to pass the challenge
+A [-] means a normal interval, a [=] means a short interval
+For example, <left>=<jump>-<stand>, means pressing left and immediately jump, and then press stand
+Normally, you are required to press <jump> immediately after you press moving
+In the later course of the game you also need to use a lot of dash
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

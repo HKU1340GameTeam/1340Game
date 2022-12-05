@@ -1,0 +1,10 @@
+HowToJump
+listen
+TalkStarts
+Press Three [3] to jump
+Press moving key and then IMMEDIATELY jump [3] to jump forward or backward
+You have DOUBLE JUMP!
+TalkEnds
+NextTalk
+Tutorial
+NextTalkEnds

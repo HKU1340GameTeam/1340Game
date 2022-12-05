@@ -1,0 +1,17 @@
+Tutorial
+choice
+TalkStarts
+Lets check the following
+1 How to move
+2 How to jump
+3 How to interact
+4 What does the <key1>=<key2>-<key3> means
+5 All checked
+TalkEnds
+NextTalk
+HowToMove
+HowToJump
+HowToInteract
+KeyCodeExplained
+End
+NextTalkEnds
