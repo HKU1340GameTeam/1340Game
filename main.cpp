@@ -87,6 +87,7 @@ int main(){
 				gotoxy(1,1);
 				player.ResetPlayer();
 				camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+				camera.WriteColor(player.GetHealthMessage(),player.HPXPos,player.HPYPos,'r');
 				camera.colorPrintCam();
 				for(int i=0;i<50;i++){
 					if(keyb.kbhit()){
@@ -174,6 +175,7 @@ int main(){
 			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
 			camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+			camera.WriteColor(player.GetHealthMessage(),player.HPXPos,player.HPYPos,'g');
 
 
 

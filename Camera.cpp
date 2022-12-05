@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
+#include <time.h>
 using namespace std;
 
 //Camera::Camera(){
@@ -242,6 +243,7 @@ void Camera::WriteDeadCam(int i){
 }
 
 void Camera::WriteOneRandomDeadCam(){
+	srand(time(NULL));
 	int numOfDeadCam = deadCams.size();
 	int randNum = rand();
 	randNum = randNum % numOfDeadCam;
@@ -270,6 +272,13 @@ void Camera::WriteObject(string message, int pos_x, int pos_y){
 
 }
 
+void Camera::WriteColor(string message, int pos_x, int pos_y, char color){
+	for(int i=0;i<(int)message.length();i++){
+		if(!OutOfCamera(pos_x+i,pos_y)){
+			fgColorCam[pos_y][pos_x+i] = color;
+		}
+	}
+}
 
 
 

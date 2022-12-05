@@ -1,3 +1,4 @@
 Camera/died1.txt
 Camera/youdied.txt
 Camera/ji1.txt
+Camera/failed1.txt

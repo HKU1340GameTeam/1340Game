@@ -630,7 +630,7 @@ void Player::ResetPlayer(){
 
 
 string Player::GetHealthMessage(){
-	return HPhead + to_string(HP);
+	return HPhead + to_string(HP) + HPtail;
 }
 
 
@@ -638,6 +638,7 @@ void Player::SetRebirth(string Name){
 	RebirthScene = Name;
 	rebirthPosX = int_x_pos;
 	rebirthPosY = int_y_pos;
+	HP = maxHP;
 
 }
 
@@ -656,12 +657,15 @@ void Player::Load(){
 	string name;
 	int x;
 	int y;
+	int MaxHP;
 	istringstream iss(line);
 
-	iss >> name >> x >> y;
+	iss >> name >> x >> y >> MaxHP;
 	rebirthPosX = x;
 	rebirthPosY = y;
 	RebirthScene = name;
+	maxHP = MaxHP;
+	HP = MaxHP;
 
 	position.x = rebirthPosX;
 	int_x_pos = rebirthPosX;

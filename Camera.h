@@ -73,6 +73,7 @@ class Camera{
 		// Write Objects
 		void WriteObject(vector<string> pic, int pos_x, int pos_y, int size_x, int size_y);
 		void WriteObject(string message, int pos_x, int pos_y);
+		void WriteColor(string message, int pos_x, int pos_y, char color);
 
 		// LKH
 		// move to follow player placed at center but will not be out of edge except if player's near ground
