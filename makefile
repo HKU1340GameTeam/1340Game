@@ -1,7 +1,7 @@
 FLAGS=-Werror -Wall -pedantic-errors -std=c++11
 
 
-main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o Scene.o Talk.o Conversation.o AboveHeadComment.o ConvBox.o NPC.o
+main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o Scene.o Talk.o Conversation.o AboveHeadComment.o ConvBox.o NPC.o UI.o
 	g++ $(FLAGS) $^ -o $@
 
 main.o: main.cpp common.h Layer.h Player.h kbhit.h Camera.h
@@ -41,6 +41,9 @@ ConvBox.o: ConvBox.cpp ConvBox.h Layer.h Camera.h Conversation.h
 	g++ $(FLAGS) -c $<
 
 NPC.o: NPC.cpp NPC.h Layer.h Conversation.h Player.h AboveHeadComment.h
+	g++ $(FLAGS) -c $<
+
+UI.o: UI.cpp UI.h
 	g++ $(FLAGS) -c $<
 
 common.o: common.cpp common.h

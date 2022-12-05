@@ -16,6 +16,7 @@
 #include "AboveHeadComment.h"
 #include "ConvBox.h"
 #include "NPC.h"
+#include "UI.h"
 using namespace std;
 
 // "kbhit.h" is from stackoverflow written by "orlov_dumitru"
@@ -39,6 +40,11 @@ int main(){
 	Layer layer1_fg_color;
 	Layer layer2_fg_color;
 	Layer PhyLayer;
+	UI ui;
+
+	ui.ReadUI();
+	ui.ReadCursorFigure();
+
 
 	// initialize camera
 	Camera camera = Camera();
@@ -135,7 +141,7 @@ int main(){
 				Input = key_nr;
 				// if 0 is hit, leave the game
 				if(Input == '0') {
-					state = "Exit";
+					state = "UI";
 					break;
 				}
 				// otherwise, update position of player accordingly, but consider collision by adding physical layer
@@ -190,10 +196,49 @@ int main(){
 			}
 			usleep(deltaTime);
 		}
-
+		system("clear");
 		while (state == "UI") {
-			return 0;
+			if(keyb.kbhit()){
+				key_nr = keyb.getch();
+				Input = key_nr;
+				// if 0 is hit, leave the game
+				if(Input == '0') {
+					state = "Exit";
+					break;
+				}
+				// otherwise, update position of player accordingly, but consider collision by adding physical layer
+				else{
+					ui.UpdateCursorPosition(Input);
+				}
+				if(Input == '\n'){
+					if (ui.button == 0){
+						state = "Normal";
+						break;
+					}
+					if (ui.button == 3){
+						state = "Exit";
+						break;
+					}
+					if (ui.button == 1){
+						system("clear");
+						ui.SavedFile(player.RebirthScene, player.rebirthPosX, player.rebirthPosY, player.HP);	
+					}
+					if (ui.button == 2){
+						system("clear");
+						ui.LoadFile(player);
+						state = "Normal";
+						scene.setName(player.RebirthScene);
+						scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+						break;
+					}
+				}
+			}
+			ui.WriteCursor();
+			ui.PrintUI();
+			usleep(deltaTime);
+			gotoxy(1,1);
 		}
+
 
 		system("clear");
 		if(state == "Conv"){
