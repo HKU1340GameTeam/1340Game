@@ -213,15 +213,18 @@ int main(){
 				if(Input == '\n'){
 					if (ui.button == 0){
 						state = "Normal";
+						system("clear");
 						break;
 					}
 					if (ui.button == 3){
 						state = "Exit";
+						system("clear");
 						break;
 					}
 					if (ui.button == 1){
 						system("clear");
 						ui.SavedFile(player.RebirthScene, player.rebirthPosX, player.rebirthPosY, player.HP);	
+						system("clear");
 					}
 					if (ui.button == 2){
 						system("clear");
@@ -229,6 +232,7 @@ int main(){
 						state = "Normal";
 						scene.setName(player.RebirthScene);
 						scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+						system("clear");
 						break;
 					}
 				}
