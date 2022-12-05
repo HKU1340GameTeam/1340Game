@@ -53,9 +53,16 @@ class NPC{
 		int NPCYSize=-1;
 		int NPCfigureYSize=-1;
 
+		// Read information of NPC
+		// including Shape & Color of figure, position, region could be detacted
 		void ReadBasicInfo(string NPCinfoPath);
+
+		// Check if player is in range of detection
+		// display above head comment if yes
 		bool DetectPlayer(Player player);
 		void ShowComment(Player player,Layer &layer);
+
+		// Display NPC figure to screen
 		void WriteNPCtoLayer(Layer &layer, Layer &layerColor);
 
 };

@@ -64,6 +64,8 @@ class Camera{
 		// Read Died Cam Info
 		void ReadDeadCamList();
 		// Read Died Cam
+		// Generate RANDOM EVENT
+		// by randomly selecting different camera
 		void ReadDeadCam(string Path);
 		void ReadDeadCams();
 
@@ -75,11 +77,12 @@ class Camera{
 		void WriteObject(string message, int pos_x, int pos_y);
 		void WriteColor(string message, int pos_x, int pos_y, char color);
 
-		// LKH
 		// move to follow player placed at center but will not be out of edge except if player's near ground
+		// one with animation
 		void EdgeCenterFollowPlayer(Layer layer, Layer fgColorLayer, Player player);
 
 		// move to center
+		// member variable associated with center player function;
 		int target = 20;
 		float accDeviation = 0.0, mvSpd = 0.0, maxDeviation = 0.0;
 		bool toCenter = true;

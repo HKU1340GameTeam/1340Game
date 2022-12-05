@@ -1,5 +1,4 @@
 // AboveHeadComment.cpp
-
 #include "common.h"
 #include <vector>
 #include <fstream>
@@ -8,6 +7,8 @@
 #include "Layer.h"
 #include "AboveHeadComment.h"
 using namespace std;
+
+// Please refers to AboveHeadComment.h for documentation
 
 AboveHeadComment::AboveHeadComment(){
 }

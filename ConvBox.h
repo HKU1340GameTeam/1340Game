@@ -45,9 +45,15 @@ class ConvBox{
 		int ConvBoxXSize;
 		int ConvBoxYSize;
 
+		// Clear (reset) box to empty
 		void ResetConvBox();
+
+		// Read box from .txt file (define shape(filling char) of box)
 		void ReadConvBox();
 		void ReadConvBoxColor();
+
+		// Conversation character name, content, etc. are all stored in .txt file
+		// Write the relevant information onto the box
 		void WriteNameToBox(string name);
 		void WriteConvToBox(Conversation conv);
 		void WriteBoxToCam(Camera &cam);

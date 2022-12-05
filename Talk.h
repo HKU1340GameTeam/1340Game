@@ -17,7 +17,9 @@ class Talk{
 		char category;
 		string talkName;
 
+		// Vector that store all talk content
 		vector<string> talkContent;
+		// One string from talkContent
 		string currentTalkContent;
 		int talkContentSize;
 		int currentContentIndex=0;
@@ -25,6 +27,7 @@ class Talk{
 		vector<string> nextTalk;
 		int choiceSize;
 
+		// Read talk content from file
 		void ReadTalk(string FullPathName);
 		int UpdateTalkContent();
 

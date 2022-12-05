@@ -16,6 +16,7 @@ class AboveHeadComment{
 	public:
 
 		AboveHeadComment();
+		// Read comment and initialize member variable
 		AboveHeadComment(int PosX, int PosY, string FullPath);
 
 		vector<string> comments;
@@ -25,7 +26,9 @@ class AboveHeadComment{
 		int objectPositionX;
 		int objectPositionY;
 
+		// Put comment above NPC head
 		void PrintComment(Layer &layer);
+		// Read comment from txt file
 		void ReadComments(string FullPath);
 
 };

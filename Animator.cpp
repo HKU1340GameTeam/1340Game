@@ -10,6 +10,7 @@
 #include<iostream>
 using namespace std;
 
+// Please refer to Animator.h for documentation
 
 Animator::Animator(int PosX, int PosY, float updateInterval, char Color){
 	ifstream fin;
@@ -95,6 +96,7 @@ void Animator::LoadFrame(){
 		currentFrameColor.push_back(videoColor[frameIndex][i]);
 	}
 }
+
 void Animator::UpdateFrame(){
 	accumulatedTime += deltaSecond;
 	if(accumulatedTime >= updateTime){
@@ -121,6 +123,7 @@ void Animator::ConvertColor(){
 		}
 	}
 }
+
 //void Animator::WriteFrame(Layer &layer){
 	//layer.WriteObject(currentFrame,posX,posY,frameXSize,frameYSize);
 //}

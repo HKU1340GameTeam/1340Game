@@ -7,6 +7,9 @@
 #include <string>
 #include "Player.h"
 #include "Color.h"
+
+// Menu of the game
+
 using namespace std;
 class UI
 {
@@ -27,14 +30,18 @@ class UI
 		int button = 0;
 		vector<int> ButtonXpostion;
 		vector<int> ButtonYpostion;
+		// Read Menu and related figures from file
 		void ReadUI();
 		void ReadCursorFigure();
 		void ReadButton();
+		// Update location of cursor
 		void UpdateCursorPosition(char Input);
 		void WriteCursor();
 		void ResetUI();
 		void PrintUI();
+		// Save player's progress to file
 		void SavedFile(string RebirthScene, int rebirthPosX, int rebirthPosY, int HP);	
+		// Set player status from saved progress
 		void LoadFile(Player &player);
 		void PrintColor();
 };

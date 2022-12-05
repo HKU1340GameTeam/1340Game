@@ -13,6 +13,7 @@ using namespace std;
 class Animator{
 	public:
 
+		// Initialize animator
 		Animator(int PosX, int PosY, float updateInterval, char Color);
 		Animator();
 
@@ -37,10 +38,19 @@ class Animator{
 
 		char color;
 
+		// Read video from .txt file;
+		// Frames are sparated by line of *s;
 		void ReadVideo(string FullPathName);
+
+		// Add color (if provided) to pixel of each frame;
 		void ConvertColor();
+
+		// Update frame index  to point to the next frame;
 		void UpdateFrame();
+
+		// Load the current frame; (clear the last fram, load the new one)
 		void LoadFrame();
+
 		//void WriteFrame(Layer &layer);
 		
 };

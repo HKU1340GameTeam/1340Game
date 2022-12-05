@@ -17,6 +17,13 @@ using namespace std;
 
 class Scene{
 public:
+	// Scene is the largest unit of container
+	// Scene comprises of Layers, and host player on it
+	// All NPCs are built into each scene
+	// When user trigger a specific event or is in a teleport region
+	// scene is reset/initialized again
+
+
 	int sizeX = 0, sizeY = 0;
 	string sceneName = "";
 	vector<string> trigger; // ~Layer

@@ -27,7 +27,9 @@ const std::string color_def_end("m");
 const std::string reset("\033[0m");
 
 // print a character with color
+// define cout color, and then output
 void fgColorPrint(char message,char color);
+// optimized by judging ignoring space from giving color
 void fgColorPrint_plus(char message,char color);
 
 
