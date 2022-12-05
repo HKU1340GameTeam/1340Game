@@ -8,5 +8,13 @@ Animation/CutWheel_10/video.txt
 Animation/CutWheel_10/video.txt
 77 26 0.1 n
 Animation/CutWheel_10/video.txt
+184 28 0.1 n
+Animation/CutWheel_10/video.txt
+212 41 0.1 n
+Animation/CutWheel_10/video.txt
+187 54 0.1 n
+Animation/CutWheel_10/video.txt
+234 64 0.1 n
+Animation/CutWheel_10/video.txt
 119 1 0.1 n
 Animation/Galaxy/video.txt

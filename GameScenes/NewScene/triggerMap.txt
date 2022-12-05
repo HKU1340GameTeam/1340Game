@@ -5,3 +5,9 @@ c NewScene 124 38
 d NewScene 124 38
 v NewScene 53 46
 w NewScene 105 115
+r NewScene 159 21
+f NewScene 159 21
+g NewScene 159 21
+h NewScene 159 21
+i NewScene 159 21
+T ThornScene 377 11
