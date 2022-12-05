@@ -1,0 +1,34 @@
+Name:
+Dog
+Conversation Path:
+Conversation/Dog/convList.txt
+Figure:
+         .-._  
+        {_}^ )o
+{\_______//~`  
+ (        )    
+ /||~~~~||\    
+|_\\_   \\_\_  
+Figure Color:
+         cccc  
+        cccc cc
+ccccccccccccc  
+ c        c    
+ cccccccccc    
+ccccc   ccccc  
+Position X:
+243
+Position Y:
+63
+leftTriggerRange:
+10
+rightTriggerRange:
+46
+upTriggerRange:
+20
+downTriggerRange:
+30
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/DogComments.txt

@@ -1,0 +1,88 @@
+Name:
+Nun
+Conversation Path:
+Conversation/Nun/convList.txt
+Figure:
+      =_-___                             
+     o    \__ \                          
+    o       __| \                        
+     o      \__  \                       
+       oooo    \  \                      
+                \  \                     
+                 |   \                   
+                  \   |                  
+         _----_    |   |                 
+        |      \   |   |                 
+        |       |    |  |                
+         |       \__/    |               
+          __---          |               
+        /   \            |               
+       |     |          |                
+       |   /            |                
+       |   \            |                
+       |   | \          |                
+       |   |   \____-----\               
+       |   |    \____-----               
+        |  |    |          \             
+        |  |   |             \           
+         \  \_|_      |      |           
+          \____/  ___/ \_____/\          
+             /    /       \     \        
+           /     /         \     \       
+          /    /             \    \      
+        /    /                \    \     
+       /   /                    \   \    
+ /\   /  /                        \  |   
+|  \/ \/                            \/ \ 
+ \    |                           __/   |
+   \_/                          /______/ 
+Figure Color:
+      =_-___                             
+     o    \__ \                          
+    o       __| \                        
+     o      \__  \                       
+       oooo    \  \                      
+                \  \                     
+                 |   \                   
+                  \   |                  
+         _----_    |   |                 
+        |      \   |   |                 
+        |       |    |  |                
+         |       \__/    |               
+          __---          |               
+        /   \            |               
+       |     |          |                
+       |   /            |                
+       |   \            |                
+       |   | \          |                
+       |   |   \____-----\               
+       |   |    \____-----               
+        |  |    |          \             
+        |  |   |             \           
+         \  \_|_      |      |           
+          \____/  ___/ \_____/\          
+             /    /       \     \        
+           /     /         \     \       
+          /    /             \    \      
+        /    /                \    \     
+       /   /                    \   \    
+ /\   /  /                        \  |   
+|  \/ \/                            \/ \ 
+ \    |                           __/   |
+   \_/                          /______/ 
+Position X:
+2
+Position Y:
+181
+leftTriggerRange:
+1
+rightTriggerRange:
+60
+upTriggerRange:
+10
+downTriggerRange:
+45
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/NunComments.txt

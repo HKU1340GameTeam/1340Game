@@ -1,0 +1,5 @@
+NPC/bird.txt
+NPC/bodhisattva.txt
+NPC/dog.txt
+NPC/fox.txt
+NPC/nun.txt
