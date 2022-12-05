@@ -1,0 +1,7 @@
+x NewScene 99 69
+b NewScene 58 67
+e NewScene 105 52
+c NewScene 124 38
+d NewScene 124 38
+v NewScene 53 46
+w NewScene 105 115
