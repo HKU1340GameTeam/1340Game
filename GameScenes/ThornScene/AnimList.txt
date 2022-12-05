@@ -1,2 +1,2 @@
-354 19 0.05 n
+353 18 0.05 n
 Animation/WaterFall1/video.txt

@@ -45,6 +45,7 @@ int main(){
 	camera.ReadDeadCams();
 
 	// initialize player
+	//Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 	Player player(0,0,PlayerXPosition,PlayerYPosition,60.0,35.0,30.0,"AboveHeadComment/PlayerComments.txt");
 	player.Load();
 
@@ -72,6 +73,11 @@ int main(){
 			NPCDetectIndex = scene.NPCsDetect(player);
 			if (scene.teleportSwitchScene(player,Input)) {
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
+				for(int i=0;i<50;i++){
+					if(keyb.kbhit()){
+						key_nr = keyb.getch();
+					}
+				}
 			}
 			else if (scene.forceSwitchScene(player)) {
 				scene.loadNewScene(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color, PhyLayer);
@@ -174,12 +180,13 @@ int main(){
 			gotoxy(1,1);
 			camera.colorPrintCam();
 
+			cout << "X: " << player.int_x_pos << " Y: " << player.int_y_pos << endl;
+
 			// refresh with refresh rate of 1/deltatime
 			if(playerStatus == 2){
 				sleep(2);
 			}
 			usleep(deltaTime);
-	
 		}
 
 		while (state == "UI") {

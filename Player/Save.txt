@@ -1,1 +1,3 @@
+ThornScene 200 30
+CScene 5 5
 WelcomeScene 132 27

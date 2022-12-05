@@ -1,0 +1,10 @@
+Help
+listen
+TalkStarts
+Try the following
+<dash>-<dash>=<right>=<jump>=<left>=<jump>
+see if it works
+TalkEnds
+NextTalk
+End
+NextTalkEnds

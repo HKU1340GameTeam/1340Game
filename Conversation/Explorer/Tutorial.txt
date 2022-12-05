@@ -1,0 +1,11 @@
+Tutorial
+choice
+TalkStarts
+Do you need some help?
+1 Yes
+2 No
+TalkEnds
+NextTalk
+Help
+End
+NextTalkEnds

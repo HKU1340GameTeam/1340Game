@@ -1,2 +1,4 @@
 Conversation/Explorer/Greetings.txt
+Conversation/Explorer/Tutorial.txt
+Conversation/Explorer/Help.txt
 Conversation/Explorer/End.txt
