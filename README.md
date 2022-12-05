@@ -12,6 +12,8 @@ The objective of the game is simple, make it through the parkour map while dodgi
 
 *TO DISPLAY/RUN THE GAME PROPERLY, PLEASE ADJUST THE CONSOLE FONT SIZE! (The initial font size of the console may be too large to display the game properly, so please zoom out).
 
+*When reach the end of the map, just walk toward the end and it will teleport you to the next level.
+
 *DISCLAIMER: If you made it to the end and see "coming soon", which means you have completed the game! [Because thats all the levels we've made so far :) ].
 
 Controls: <br />
