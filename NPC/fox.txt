@@ -1,0 +1,30 @@
+Name:
+Fox
+Conversation Path:
+Conversation/Fox/convList.txt
+Figure:
+_,-=._              /|_/|   
+`-.}   `=._,.-=-._.,  @ @._,
+   `._ _,-.   )      _,.-'  
+      `    G.m-"^m`m'       
+Figure Color:
+yyyyyy              yyyyy   
+yyyy   yyyyyyyyyyyyy  y yyyy
+   yyy yyyy   y      yyyyy  
+      y    yyyyyyyyyy       
+Position X:
+2
+Position Y:
+273
+leftTriggerRange:
+1
+rightTriggerRange:
+40
+upTriggerRange:
+10
+downTriggerRange:
+14
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/FoxComments.txt

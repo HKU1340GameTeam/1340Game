@@ -1,0 +1,30 @@
+Name:
+Bird
+Conversation Path:
+Conversation/Bird/convList.txt
+Figure:
+  __    
+<(o )___
+ ( ._> /
+  `---' 
+Figure Color:
+  yy    
+yyy yyyy
+ y yyy y
+  yyyyy 
+Position X:
+94
+Position Y:
+52
+leftTriggerRange:
+50
+rightTriggerRange:
+10
+upTriggerRange:
+10
+downTriggerRange:
+20
+Write to layer:
+1
+Above Head Comment:
+AboveHeadComment/BirdComments.txt
