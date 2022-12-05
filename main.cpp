@@ -87,6 +87,7 @@ int main(){
 				gotoxy(1,1);
 				player.ResetPlayer();
 				camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+				camera.WriteColor(player.GetHealthMessage(),player.HPXPos,player.HPYPos,'r');
 				camera.colorPrintCam();
 				for(int i=0;i<50;i++){
 					if(keyb.kbhit()){
@@ -174,6 +175,7 @@ int main(){
 			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
 			camera.EdgeBlockFollowPlayer(layer, layer_fg_color, player);
 			camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+			camera.WriteColor(player.GetHealthMessage(),player.HPXPos,player.HPYPos,'g');
 
 
 
@@ -195,6 +197,13 @@ int main(){
 
 		system("clear");
 		if(state == "Conv"){
+			scene.resetLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
+			scene.WriteNPCsToLayer(layer1,layer1_fg_color);
+			layer1.WriteObject(player.figure, player.int_x_pos, player.int_y_pos, 3, 3);
+			layer1_fg_color.WriteObject(player.figure_fg_color, player.int_x_pos, player.int_y_pos, 3, 3);
+			scene.pileLayer(layer, layer1, layer2, layer_fg_color, layer1_fg_color, layer2_fg_color);
+			camera.WriteObject(player.GetHealthMessage(),player.HPXPos,player.HPYPos);
+			camera.WriteColor(player.GetHealthMessage(),player.HPXPos,player.HPYPos,'g');
 			camera.CenterFollowPlayer(layer,layer_fg_color, player);
 		}
 		while (state == "Conv") {

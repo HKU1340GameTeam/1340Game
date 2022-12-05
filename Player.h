@@ -59,7 +59,8 @@ class Player{
 		int dashNumAvailable = dashNum;
 
 		// Player HP
-		string HPhead = "Player Health: ";
+		string HPhead = "===== Player Health: ";
+		string HPtail = " =====";
 		int maxHP = 50;
 		int HP = 50;
 		int HPXPos = 5;

@@ -16,6 +16,8 @@ class Animator{
 		Animator(int PosX, int PosY, float updateInterval, char Color);
 		Animator();
 
+		string AnimatorInfoFile = "Player/Animator.txt";
+		float AnimatorSpeedUp;
 		vector<vector<string>> video;
 		vector<vector<string>> videoColor;
 		vector<string> currentFrame;

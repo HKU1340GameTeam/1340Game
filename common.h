@@ -27,5 +27,6 @@ const float deathWaitTime = 7.5;
 
 // used to control where cursor goes
 void gotoxy(int x,int y);
+void CustomGameSetting();
 
 #endif

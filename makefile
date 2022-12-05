@@ -1,4 +1,4 @@
-FLAGS=-ggdb3 -Werror -Wall -pedantic-errors -std=c++11
+FLAGS=-Werror -Wall -pedantic-errors -std=c++11
 
 
 main: main.o Layer.o Player.o kbhit.o common.o Camera.o Color.o Animator.o Scene.o Talk.o Conversation.o AboveHeadComment.o ConvBox.o NPC.o

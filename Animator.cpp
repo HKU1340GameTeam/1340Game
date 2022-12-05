@@ -3,6 +3,8 @@
 #include "Animator.h"
 #include<vector>
 #include<string>
+#include <fstream>
+#include <sstream>
 #include "Layer.h"
 #include "common.h"
 #include<iostream>
@@ -10,9 +12,23 @@ using namespace std;
 
 
 Animator::Animator(int PosX, int PosY, float updateInterval, char Color){
+	ifstream fin;
+	fin.open(AnimatorInfoFile);
+	if(fin.fail()){
+		cerr << "cannot open " << AnimatorInfoFile << endl;
+		exit(1);
+	}
+	string line;
+	getline(fin,line);
+	float speedup;
+	istringstream iss(line);
+	iss >> speedup;
+	AnimatorSpeedUp = speedup;
+	fin.close();
+
 	posX = PosX;
 	posY = PosY;
-	updateTime = updateInterval;
+	updateTime = updateInterval / AnimatorSpeedUp;
 	color = Color;
 }
 
