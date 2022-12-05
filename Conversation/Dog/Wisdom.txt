@@ -1,0 +1,11 @@
+Wisdom
+listen
+TalkStarts
+Just like you
+I have enormous wisdom
+They said
+dont go down
+TalkEnds
+NextTalk
+End
+NextTalkEnds

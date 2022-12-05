@@ -1,0 +1,13 @@
+Pray
+Listen
+TalkStarts
+Hello, my boy
+What a tragedy you fall into here
+You must get out as quick as possible
+_
+I'll pray for you
+Good luck
+TalkEnds
+NextTalk
+End
+NextTalkEnds

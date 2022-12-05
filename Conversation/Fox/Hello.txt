@@ -1,0 +1,11 @@
+Hello
+listen
+TalkStarts
+Hello
+Poor guy
+What a shame falling into this trap
+Better get smarter next time
+TalkEnds
+NextTalk
+Hint
+NextTalkEnds

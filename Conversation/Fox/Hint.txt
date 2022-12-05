@@ -1,0 +1,11 @@
+Hint
+choice
+TalkStarts
+You can beg me for some hint. But I will look down at you
+1 Yes please
+2 No thanks
+TalkEnds
+NextTalk
+Answer
+End
+NextTalkEnds

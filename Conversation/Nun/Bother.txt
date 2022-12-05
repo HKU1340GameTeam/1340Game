@@ -1,0 +1,13 @@
+Bother
+listen
+TalkStarts
+Hello everyone
+I am a single practicer
+I have practiced for two and half years
+I like singing, dancing, rapping
+And Basketball!
+Music!
+TalkEnds
+NextTalk
+End
+NextTalkEnds

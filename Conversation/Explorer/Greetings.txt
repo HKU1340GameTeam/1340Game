@@ -4,10 +4,10 @@ TalkStarts
 Hello
 You must be an explorer
 Just like me
-I'm to big to jump up there
+I'm too big to jump up there
 But I've seen a lot explorer passing it
 Do you need some help?
 TalkEnds
 NextTalk
-Tutorial
+Tutorial`
 NextTalkEnds

@@ -1,0 +1,4 @@
+Conversation/Fox/Hello.txt
+Conversation/Fox/Hint.txt
+Conversation/Fox/Answer.txt
+Conversation/Fox/End.txt
