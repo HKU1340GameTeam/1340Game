@@ -17,7 +17,7 @@ The objective of the game is simple, make it through the parkour map while dodgi
 *DISCLAIMER: If you made it to the end and see "coming soon", which means you have completed the game! [Because thats all the levels we've made so far :) ].
 
 Controls: <br />
-**l**(L) for moving left, **'**(") for moveing right, **3** for jumping, **space** for dashing, <br />
+****l**(L) for moving left, **'**(") for moveing right, **3** for jumping, **space** for dashing,** <br />
 t to teleport through portal, r for conversation/interaction, <br />
 o for constant left move, [ for constant right move, ; for stand move.<br /> 
 Pressing dash after pressing constant move or stand move gives you constant dash.<br />
