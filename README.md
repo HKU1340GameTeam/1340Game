@@ -6,7 +6,7 @@ Fan Zimeng 3035952745
 
 <img width="452" alt="image" src="https://user-images.githubusercontent.com/114755880/205676312-f6686a6f-d5a1-42fc-be16-ba2ba878d04e.png">
 
-The objective of the game is simple, make it through the parkour map while dodging obstacles with limited health. Most importantly, DON'T FALL! There will be some pits that you do not want to fall in...
+The objective of the game is simple, make it through the parkour map while dodging obstacles with limited health. Most importantly, **DON'T FALL!** There will be some pits that you do not want to fall in...
 
 *When entering the game with ./main, you need to go down and enter the portal to offcially begin the parkour map. Or press 0 and load your saved game.
 
@@ -17,7 +17,7 @@ The objective of the game is simple, make it through the parkour map while dodgi
 *DISCLAIMER: If you made it to the end and see "coming soon", which means you have completed the game! [Because thats all the levels we've made so far :) ].
 
 Controls: <br />
-l(L) for moving left, '(") for moveing right, 3 for jumping, space for dashing, <br />
+**l**(L) for moving left, **'**(") for moveing right, **3** for jumping, **space** for dashing, <br />
 t to teleport through portal, r for conversation/interaction, <br />
 o for constant left move, [ for constant right move, ; for stand move.<br /> 
 Pressing dash after pressing constant move or stand move gives you constant dash.<br />
