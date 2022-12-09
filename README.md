@@ -19,7 +19,8 @@ The objective of the game is simple, make it through the parkour map while dodgi
 Controls: <br />
 l(L) for moving left, '(") for moveing right, 3 for jumping, space for dashing, <br />
 t to teleport through portal, r for conversation/interaction, <br />
-o for constant left move, [ for constant right move. <br />
+o for constant left move, [ for constant right move, ; for stand move.<br /> 
+Pressing dash after pressing constant move or stand move gives you constant dash.<br />
 0(zero) to enter UI (pause menu) where you can 'RESUME', 'SAVE', 'LOAD', or 'EXIT', j for arrow down, k for arrow up and ENTER to select.
 
 *You can customize your own keyboard control in Player/KeyboardInput.txt <br />
